@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{439823D0-9D2D-4FBB-9805-BE38433AFE5D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TinyGUI</RootNamespace>
+    <AssemblyName>TinyGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>panda.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Converters\ProgressConverter.cs" />
+    <Compile Include="Converters\SizeConverter.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ImageModel.cs" />
+    <Compile Include="ViewModels\MainModel.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Styles\Button.xaml" />
+    <Page Include="Styles\CustomGroupBoxStyle.xaml" />
+    <Page Include="Styles\Fonts.xaml" />
+    <Page Include="Styles\ProgressBar.xaml" />
+    <Page Include="Styles\ScrollViewer.xaml" />
+    <Page Include="Templates\CustomListBoxControlTemplate.xaml" />
+    <Page Include="Templates\CustomListBoxItemControlTemplate.xaml" />
+    <Page Include="Templates\CustomListBoxItemDataTemplate.xaml" />
+    <Page Include="Views\MainWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\iconfont.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Bold-Italic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Bold.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-BoldItalic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-ExtraBold.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-ExtraLight.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Italic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Light.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-LightItalic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Medium.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-MediumItalic.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Regular.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Thin.ttf" />
+    <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-ThinItalic.ttf" />
+    <Resource Include="Fonts\segoe.ttf" />
+    <Resource Include="Images\th.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinifyAPI\TinifyAPI.csproj">
+      <Project>{d526ebad-5864-475d-a7b1-252e4a89f3b5}</Project>
+      <Name>TinifyAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\panda.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="panda.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
