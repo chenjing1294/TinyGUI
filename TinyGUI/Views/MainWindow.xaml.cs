@@ -104,7 +104,11 @@ namespace TinyGUI.Views
         {
             long lSize = 0;
             if (File.Exists(path))
-                lSize = new FileInfo(path).Length;
+            {
+                FileInfo fileInfo = new FileInfo(path);
+                lSize = fileInfo.Length;
+            }
+
             return lSize;
         }
 
@@ -220,6 +224,8 @@ namespace TinyGUI.Views
 
         private void StartButton_OnClick(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Process.Start("https://github.com/chenjing1294/TinyGUI");
+            e.Handled = true;
         }
     }
 }
