@@ -1,9 +1,7 @@
 ﻿namespace TinyGUI
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App
     {
+        public static string Version = "1.0.0.0";
     }
 }

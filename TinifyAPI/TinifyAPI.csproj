@@ -76,7 +76,6 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Class1.cs" />
         <Compile Include="Client.cs" />
         <Compile Include="Internal\Platform.cs" />
         <Compile Include="Internal\Proxy.cs" />

@@ -45,7 +45,8 @@ namespace TinyGUI.Views
                     _mainModel.ImageModels.Add(new ImageModel()
                     {
                         Path = fileName,
-                        Name = GetFileName(fileName)
+                        Name = GetFileName(fileName),
+                        OriFileSize = GetFileSize(fileName)
                     });
                 }
             }
@@ -225,6 +226,12 @@ namespace TinyGUI.Views
         private void StartButton_OnClick(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/chenjing1294/TinyGUI");
+            e.Handled = true;
+        }
+
+        private void VersionHyperlink_OnClick(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.redisant.cn/#Family");
             e.Handled = true;
         }
     }

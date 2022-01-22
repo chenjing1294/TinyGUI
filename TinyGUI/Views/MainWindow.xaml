@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:TinyGUI.ViewModels"
         xmlns:local="clr-namespace:TinyGUI"
-        Title="TinyGUI" Height="450" Width="400" MinHeight="400" MinWidth="300"
+        Title="TinyGUI" Height="450" Width="400" MinHeight="450" MinWidth="300"
         Background="White">
   <Window.DataContext>
     <vm:MainModel />
@@ -61,10 +61,12 @@
                 Style="{StaticResource CornerButton}" />
       </Grid>
     </Grid>
-
-
     <Grid x:Name="DropFileGrid" Visibility="{Binding DropBoxGridVisibility, Mode=OneWay}">
-      <StackPanel VerticalAlignment="Center">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="1*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <StackPanel Grid.Row="0">
         <Grid>
           <Rectangle Grid.Row="0" AllowDrop="True"
                      Width="250" Height="300"
@@ -84,7 +86,8 @@
             <TextBlock FontFamily="{StaticResource JetBrainsMono}" Text="Drop Image Here" />
           </StackPanel>
         </Grid>
-        <Button x:Name="DropButton" Style="{StaticResource CornerButton}" Content="Choose Image Files" Width="250"
+        <Button x:Name="DropButton" Style="{StaticResource CornerButton}"
+                Content="Choose Image Files" Width="250"
                 Click="DropButton_OnClick" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
           <Button Style="{StaticResource ButtonWithIconStyle}"
@@ -105,7 +108,15 @@
         </StackPanel>
       </StackPanel>
 
+      <StackPanel Margin="0 0 5 5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"
+                  VerticalAlignment="Center">
+        <TextBlock Foreground="LightGray">
+          <Run Text="Version" />
+          <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
+            <Run Text="{x:Static local:App.Version}" />
+          </Hyperlink>
+        </TextBlock>
+      </StackPanel>
     </Grid>
-
   </Grid>
 </Window>
