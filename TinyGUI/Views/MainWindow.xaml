@@ -11,6 +11,7 @@
   <Grid>
     <Grid x:Name="ImageListGrid" Visibility="{Binding ImageListGridVisibility, Mode=OneWay}">
       <ListBox SelectionMode="Single"
+               BorderThickness="0"
                VirtualizingStackPanel.IsVirtualizing="True"
                VirtualizingStackPanel.VirtualizationMode="Recycling"
                VirtualizingStackPanel.ScrollUnit="Pixel"

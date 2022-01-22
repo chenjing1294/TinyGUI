@@ -184,11 +184,18 @@ namespace TinyGUI.Views
                 {
                     if (obj is ImageModel imageModel)
                     {
-                        var sourceData = File.ReadAllBytes(imageModel.Path);
-                        Task<Source> source = Tinify.FromBuffer(sourceData, imageModel.Path);
-                        ByteToFile(source.ToBuffer(imageModel.Path).Result,
-                            Path.GetDirectoryName(imageModel.Path) + "\\" +
-                            $"{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}");
+                        try
+                        {
+                            var sourceData = File.ReadAllBytes(imageModel.Path);
+                            Task<Source> source = Tinify.FromBuffer(sourceData, imageModel.Path);
+                            ByteToFile(source.ToBuffer(imageModel.Path).Result,
+                                Path.GetDirectoryName(imageModel.Path) + "\\" +
+                                $"{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}");
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.InnerException != null ? e.InnerException.Message : e.Message, "ERROR");
+                        }
                     }
                 }, file);
             }
