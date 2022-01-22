@@ -3,12 +3,13 @@
                     xmlns:converters="clr-namespace:TinyGUI.Converters">
   <converters:ProgressConverter x:Key="ProgressConverter" />
   <converters:SizeConverter x:Key="SizeConverter" />
+  <converters:StringToImageConverter x:Key="StringToImageConverter" />
   <DataTemplate x:Key="CustomListBoxItemDataTemplate">
     <Grid>
       <Border x:Name="Border" TextBlock.FontFamily="{StaticResource JetBrainsMono}">
         <Border.Background>
           <ImageBrush Stretch="UniformToFill"
-                      ImageSource="{Binding Path, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                      ImageSource="{Binding Path, Mode=OneWay, Converter={StaticResource StringToImageConverter}}" />
         </Border.Background>
         <Border.Effect>
           <BlurEffect x:Name="BlurEffect" Radius="3" />

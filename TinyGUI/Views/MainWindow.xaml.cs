@@ -62,6 +62,7 @@ namespace TinyGUI.Views
 
         private void UIElement_OnDrop(object sender, DragEventArgs e)
         {
+            e.Handled = true;
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] paths = (string[]) e.Data.GetData(DataFormats.FileDrop);
@@ -89,8 +90,6 @@ namespace TinyGUI.Views
                 _mainModel.ImageListGridVisibility = Visibility.Visible;
                 Compress(_mainModel);
             }
-
-            e.Handled = true;
         }
 
 
