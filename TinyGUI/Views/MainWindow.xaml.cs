@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -27,6 +28,15 @@ namespace TinyGUI.Views
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Visible;
             }
+
+            _mainModel.ReplaceOriginalImage = Settings.Default.ReplaceOriginalImage;
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Settings.Default.ReplaceOriginalImage = _mainModel.ReplaceOriginalImage;
+            Settings.Default.Save();
         }
 
         private void DropButton_OnClick(object sender, RoutedEventArgs e)
@@ -127,23 +137,21 @@ namespace TinyGUI.Views
             }
         }
 
-        private bool ByteToFile(byte[] byteArray, string fileName)
+        private void ByteToFile(byte[] byteArray, string fileName, bool isReplace = false)
         {
-            bool result = false;
             try
             {
-                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
+                using (FileStream fs =
+                       new FileStream(fileName, isReplace ? FileMode.Truncate : FileMode.OpenOrCreate,
+                           FileAccess.Write))
                 {
                     fs.Write(byteArray, 0, byteArray.Length);
-                    result = true;
                 }
             }
             catch
             {
-                result = false;
+                // ignored
             }
-
-            return result;
         }
 
         private void Compress(MainModel mainModel)
@@ -187,9 +195,12 @@ namespace TinyGUI.Views
                         {
                             var sourceData = File.ReadAllBytes(imageModel.Path);
                             Task<Source> source = Tinify.FromBuffer(sourceData, imageModel.Path);
-                            ByteToFile(source.ToBuffer(imageModel.Path).Result,
-                                Path.GetDirectoryName(imageModel.Path) + "\\" +
-                                $"{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}");
+                            var newPath = _mainModel.ReplaceOriginalImage
+                                ? imageModel.Path
+                                : $"{Path.GetDirectoryName(imageModel.Path)}\\{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}";
+
+                            ByteToFile(source.ToBuffer(imageModel.Path).Result, newPath,
+                                _mainModel.ReplaceOriginalImage);
                         }
                         catch (Exception e)
                         {

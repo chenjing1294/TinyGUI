@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:TinyGUI.ViewModels"
         xmlns:local="clr-namespace:TinyGUI"
-        Title="TinyGUI" Height="450" Width="400" MinHeight="450" MinWidth="300"
+        Title="TinyGUI" Height="450" Width="350" MinHeight="450" MinWidth="300"
         Background="White">
   <Window.DataContext>
     <vm:MainModel />
@@ -67,7 +67,7 @@
         <RowDefinition Height="1*" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
-      <StackPanel Grid.Row="0">
+      <StackPanel Grid.Row="0" VerticalAlignment="Center">
         <Grid>
           <Rectangle Grid.Row="0" AllowDrop="True"
                      Width="250" Height="300"
@@ -109,15 +109,28 @@
         </StackPanel>
       </StackPanel>
 
-      <StackPanel Margin="0 0 5 5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"
-                  VerticalAlignment="Center">
-        <TextBlock Foreground="LightGray">
-          <Run Text="Version" />
-          <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
-            <Run Text="{x:Static local:App.Version}" />
-          </Hyperlink>
-        </TextBlock>
-      </StackPanel>
+
+      <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="5 0 0 5" Grid.Column="0" Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
+          <CheckBox IsChecked="{Binding ReplaceOriginalImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    VerticalContentAlignment="Center" Content="Replace original image" />
+        </StackPanel>
+        <StackPanel Margin="0 0 5 5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+          <TextBlock Foreground="LightGray">
+            <Run Text="Version" />
+            <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
+              <Run Text="{x:Static local:App.Version}" />
+            </Hyperlink>
+          </TextBlock>
+        </StackPanel>
+      </Grid>
     </Grid>
   </Grid>
 </Window>

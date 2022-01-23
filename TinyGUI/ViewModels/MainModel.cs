@@ -80,5 +80,18 @@ namespace TinyGUI.ViewModels
                                                  DropBoxGridVisibility = Visibility.Visible;
                                              }
                                          }));
+
+
+        private bool _replaceOriginalImage = false;
+
+        public bool ReplaceOriginalImage
+        {
+            get => _replaceOriginalImage;
+            set
+            {
+                _replaceOriginalImage = value;
+                OnPropertyChanged(nameof(ReplaceOriginalImage));
+            }
+        }
     }
 }

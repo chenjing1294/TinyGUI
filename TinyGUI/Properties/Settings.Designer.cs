@@ -34,5 +34,17 @@ namespace TinyGUI.Properties {
                 this["Key"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ReplaceOriginalImage {
+            get {
+                return ((bool)(this["ReplaceOriginalImage"]));
+            }
+            set {
+                this["ReplaceOriginalImage"] = value;
+            }
+        }
     }
 }
