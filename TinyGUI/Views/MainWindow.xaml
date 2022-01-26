@@ -76,14 +76,13 @@
                      Fill="WhiteSmoke"
                      RadiusX="10"
                      RadiusY="10"
-                     StrokeDashArray="8"
+                     StrokeDashArray="6"
                      StrokeDashCap="Round"
                      Stroke="Silver"
                      StrokeThickness="2" />
           <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False">
-            <TextBlock FontFamily="{StaticResource Segoe}" Text="&#xeb9f;" FontSize="50"
-                       Foreground="DarkGray"
-                       HorizontalAlignment="Center" />
+            <Image Source="../Images/TinyGUI.png" Margin="0 0 0 10"
+                   Stretch="Uniform" Width="100" Height="100" HorizontalAlignment="Center"/>
             <TextBlock FontFamily="{StaticResource JetBrainsMono}" Text="Drop Image Here" />
           </StackPanel>
         </Grid>
