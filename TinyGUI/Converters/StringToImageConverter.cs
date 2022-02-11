@@ -20,6 +20,7 @@ namespace TinyGUI.Converters
                     image.BeginInit();
                     image.CacheOption = BitmapCacheOption.OnLoad;
                     image.StreamSource = stream;
+                    image.DecodePixelHeight = 100;
                     image.EndInit();
                     result = image;
                 }

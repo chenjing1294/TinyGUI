@@ -9,4 +9,3 @@ TinyGUI is a visual implementation of TinyPNG that helps you compress images qui
 Installation package download address: http://www.redisant.cn/#Family
 
 ![](./image1.png)
-![](./image2.png)
