@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -19,6 +19,17 @@ namespace TinyGUI.Views
         public MainWindow()
         {
             InitializeComponent();
+            if (TinyGUI.Properties.Settings.Default.Language == "zh-CN")
+            {
+                ChineseCheckBox.IsChecked = true;
+            }
+            else
+            {
+                EnglishCheckBox.IsChecked = true;
+            }
+
+            Replace.IsChecked = TinyGUI.Properties.Settings.Default.ReplaceOriginalImage;
+
             _mainModel = (MainModel) DataContext;
             if (string.IsNullOrEmpty(Settings.Default.Key))
             {
@@ -28,14 +39,11 @@ namespace TinyGUI.Views
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Visible;
             }
-
-            _mainModel.ReplaceOriginalImage = Settings.Default.ReplaceOriginalImage;
         }
 
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            Settings.Default.ReplaceOriginalImage = _mainModel.ReplaceOriginalImage;
             Settings.Default.Save();
         }
 
@@ -65,6 +73,7 @@ namespace TinyGUI.Views
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
                 _mainModel.KeyGridVisibility = Visibility.Collapsed;
+                _mainModel.SettingGridVisibility = Visibility.Collapsed;
                 _mainModel.ImageListGridVisibility = Visibility.Visible;
                 Compress(_mainModel);
             }
@@ -97,6 +106,7 @@ namespace TinyGUI.Views
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
                 _mainModel.KeyGridVisibility = Visibility.Collapsed;
+                _mainModel.SettingGridVisibility = Visibility.Collapsed;
                 _mainModel.ImageListGridVisibility = Visibility.Visible;
                 Compress(_mainModel);
             }
@@ -195,12 +205,11 @@ namespace TinyGUI.Views
                         {
                             var sourceData = File.ReadAllBytes(imageModel.Path);
                             Task<Source> source = Tinify.FromBuffer(sourceData, imageModel.Path);
-                            var newPath = _mainModel.ReplaceOriginalImage
+                            var newPath = TinyGUI.Properties.Settings.Default.ReplaceOriginalImage
                                 ? imageModel.Path
                                 : $"{Path.GetDirectoryName(imageModel.Path)}\\{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}";
 
-                            ByteToFile(source.ToBuffer(imageModel.Path).Result, newPath,
-                                _mainModel.ReplaceOriginalImage);
+                            ByteToFile(source.ToBuffer(imageModel.Path).Result, newPath, TinyGUI.Properties.Settings.Default.ReplaceOriginalImage);
                         }
                         catch (Exception e)
                         {
@@ -221,6 +230,7 @@ namespace TinyGUI.Views
                 Settings.Default.Save();
                 _mainModel.KeyGridVisibility = Visibility.Collapsed;
                 _mainModel.ImageListGridVisibility = Visibility.Collapsed;
+                _mainModel.SettingGridVisibility = Visibility.Collapsed;
                 _mainModel.DropBoxGridVisibility = Visibility.Visible;
             }
         }
@@ -229,6 +239,7 @@ namespace TinyGUI.Views
         {
             _mainModel.ImageListGridVisibility = Visibility.Collapsed;
             _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
+            _mainModel.SettingGridVisibility = Visibility.Collapsed;
             _mainModel.KeyGridVisibility = Visibility.Visible;
             KeyTextBox.Text = Settings.Default.Key;
             e.Handled = true;
@@ -244,6 +255,34 @@ namespace TinyGUI.Views
         {
             System.Diagnostics.Process.Start("https://github.com/chenjing1294/TinyGUI");
             e.Handled = true;
+        }
+
+        private void SettingButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _mainModel.KeyGridVisibility = Visibility.Collapsed;
+            _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
+            _mainModel.ImageListGridVisibility = Visibility.Collapsed;
+            _mainModel.SettingGridVisibility = Visibility.Visible;
+            e.Handled = true;
+        }
+
+        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            TinyGUI.Properties.Settings.Default.Language = "zh-CN";
+            if (ChineseCheckBox.IsChecked == true)
+            {
+                TinyGUI.Properties.Settings.Default.Language = "zh-CN";
+            }
+            else if (EnglishCheckBox.IsChecked == true)
+            {
+                TinyGUI.Properties.Settings.Default.Language = "en-US";
+            }
+
+            TinyGUI.Properties.Settings.Default.ReplaceOriginalImage = false || Replace.IsChecked == true;
+            _mainModel.KeyGridVisibility = Visibility.Collapsed;
+            _mainModel.ImageListGridVisibility = Visibility.Collapsed;
+            _mainModel.SettingGridVisibility = Visibility.Collapsed;
+            _mainModel.DropBoxGridVisibility = Visibility.Visible;
         }
 
         private void VersionHyperlink_OnClick(object sender, RoutedEventArgs e)

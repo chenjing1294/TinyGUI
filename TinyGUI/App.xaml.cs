@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -6,8 +8,14 @@ namespace TinyGUI
 {
     public partial class App
     {
-        public static string Version = "1.0.0.2";
+        public static string Version = "1.0.0.3";
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            InitLanguage();
+            RegisterEvents();
+            base.OnStartup(e);
+        }
 
         private void RegisterEvents()
         {
@@ -19,6 +27,12 @@ namespace TinyGUI
 
             //非UI线程未捕获异常处理事件
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+
+        private void InitLanguage()
+        {
+            string language = TinyGUI.Properties.Settings.Default.Language;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
         }
 
         private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

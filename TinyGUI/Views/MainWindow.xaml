@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:TinyGUI.ViewModels"
         xmlns:local="clr-namespace:TinyGUI"
+        xmlns:lang="clr-namespace:TinyGUI.Properties.Languages"
         Title="TinyGUI" Height="450" Width="350" MinHeight="450" MinWidth="300"
         Background="White">
   <Window.DataContext>
@@ -40,14 +41,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="Set Your API Key" Foreground="White"
+          <TextBlock Grid.Row="0" Text="{x:Static lang:Language.SetAPIKey}" Foreground="White"
                      FontSize="16"
                      FontFamily="{StaticResource JetBrainsMono}" />
           <TextBlock Grid.Row="1" FontFamily="{StaticResource JetBrainsMono}">
             <Run Text="Click to get your API Key:" Foreground="White" />
             <LineBreak />
             <Hyperlink Click="Hyperlink_OnClick">
-              <Run Text="https://tinify.cn/developers" />
+              <Run Text="{x:Static lang:Language.KeyUrl}" />
             </Hyperlink>
           </TextBlock>
         </Grid>
@@ -56,7 +57,7 @@
                  x:Name="KeyTextBox"
                  FontFamily="{StaticResource JetBrainsMono}"
                  VerticalAlignment="Center" VerticalContentAlignment="Center" />
-        <Button Grid.Row="2" Content="保存"
+        <Button Grid.Row="2" Content="{x:Static lang:Language.Save}"
                 Margin="0 10"
                 Click="ButtonBase_OnClick"
                 Style="{StaticResource CornerButton}" />
@@ -82,54 +83,67 @@
                      StrokeThickness="2" />
           <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False">
             <Image Source="../Images/TinyGUI.png" Margin="0 0 0 10"
-                   Stretch="Uniform" Width="100" Height="100" HorizontalAlignment="Center"/>
-            <TextBlock FontFamily="{StaticResource JetBrainsMono}" Text="Drop Image Here" />
+                   Stretch="Uniform" Width="100" Height="100" HorizontalAlignment="Center" />
+            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource JetBrainsMono}" Text="{x:Static lang:Language.DropImageHere}" />
           </StackPanel>
         </Grid>
         <Button x:Name="DropButton" Style="{StaticResource CornerButton}"
-                Content="Choose Image Files" Width="250"
+                Content="{x:Static lang:Language.ChooseImageFiles}" Width="250"
                 Click="DropButton_OnClick" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
           <Button Style="{StaticResource ButtonWithIconStyle}"
                   x:Name="ResetApiKey"
                   FontFamily="{StaticResource Segoe}"
-                  Margin="0 10 5 0"
-                  ToolTip="重置API Key"
+                  Margin="0 10 10 0"
+                  ToolTip="{x:Static lang:Language.ResetKey}"
                   Click="ResetApiKey_OnClick"
                   Content="&#xe192;" />
           <Button Style="{StaticResource ButtonWithIconStyle}"
                   x:Name="StartButton"
                   FontFamily="{StaticResource Segoe}"
-                  Margin="5 10 0 0"
+                  Margin="0 10 10 0"
                   Foreground="#EAC54F"
-                  ToolTip="给个星星，支持一下"
+                  ToolTip="{x:Static lang:Language.SupportMe}"
                   Click="StartButton_OnClick"
                   Content="&#xe00a;" />
+          <Button Style="{StaticResource ButtonWithIconStyle}"
+                  x:Name="SettingButton"
+                  Margin="0 10 0 0"
+                  FontFamily="{StaticResource Segoe}"
+                  Foreground="Black"
+                  ToolTip="{x:Static lang:Language.Settings}"
+                  Click="SettingButton_OnClick"
+                  Content="&#xe115;" />
         </StackPanel>
       </StackPanel>
-
-
-      <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <StackPanel Margin="5 0 0 5" Grid.Column="0" Orientation="Horizontal"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
-          <CheckBox IsChecked="{Binding ReplaceOriginalImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                    VerticalContentAlignment="Center" Content="Replace original image" />
-        </StackPanel>
-        <StackPanel Margin="0 0 5 5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right"
-                    VerticalAlignment="Center">
-          <TextBlock Foreground="LightGray">
-            <Run Text="Version" />
-            <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
-              <Run Text="{x:Static local:App.Version}" />
-            </Hyperlink>
-          </TextBlock>
-        </StackPanel>
-      </Grid>
+      <StackPanel Grid.Row="1" Margin="0 0 5 5" Orientation="Horizontal" HorizontalAlignment="Right"
+                  VerticalAlignment="Center">
+        <TextBlock Foreground="LightGray">
+          <Run Text="{x:Static lang:Language.Version}" />
+          <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
+            <Run Text="{x:Static local:App.Version}" />
+          </Hyperlink>
+        </TextBlock>
+      </StackPanel>
+    </Grid>
+    <Grid x:Name="SettingGrid" Visibility="{Binding SettingGridVisibility, Mode=OneWay}">
+      <StackPanel Margin="10 10 10 0">
+        <GroupBox Header="{x:Static lang:Language.Lang}" Margin="0 0 0 10">
+          <StackPanel Orientation="Horizontal" Margin="0 10">
+            <RadioButton x:Name="ChineseCheckBox" Content="{x:Static lang:Language.Chinese}" Margin="0 0 10 0" />
+            <RadioButton x:Name="EnglishCheckBox" Content="{x:Static lang:Language.English}" />
+          </StackPanel>
+        </GroupBox>
+        <GroupBox Header="{x:Static lang:Language.File}">
+          <StackPanel Orientation="Horizontal" Margin="0 10">
+            <CheckBox x:Name="Replace" VerticalContentAlignment="Center" Content="{x:Static lang:Language.ReplaceOriginalImage}" Margin="0 0 10 0" />
+          </StackPanel>
+        </GroupBox>
+        <Button Content="{x:Static lang:Language.Save}"
+                Margin="0 10"
+                Click="SaveButton_OnClick"
+                Style="{StaticResource CornerButton}" />
+      </StackPanel>
     </Grid>
   </Grid>
 </Window>
