@@ -1,1 +1,1 @@
-MainPackage=C:\Users\chenjing\RiderProjects\TinyGUI\TinyGUIInstaller\bin\x86\Release\TinyGUIInstaller_1.0.0.0_x86.appx
+MainPackage=C:\Users\chenjing\RiderProjects\TinyGUI\TinyGUIInstaller\bin\x86\Release\TinyGUIInstaller_1.0.3.0_x86.appx

@@ -367,7 +367,9 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>34760Redisant.DataAssistant</MainPackageIdentityName>
     <MainPackageIdentityName>34760Redisant.RedisAssistant</MainPackageIdentityName>
+    <MainPackageIdentityName>34760Redisant.ZooKeeperAssistant</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9PM0SRDVB8GX" />
 </StoreAssociation>

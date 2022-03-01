@@ -9,7 +9,7 @@
   <Identity
     Name="34760Redisant.TinyGUI"
     Publisher="CN=66A83AC9-E15A-4330-96A7-164DA2EB6C89"
-    Version="1.0.0.0" />
+    Version="1.0.3.0" />
 
   <Properties>
     <DisplayName>TinyGUI</DisplayName>
