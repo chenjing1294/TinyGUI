@@ -92,5 +92,18 @@ namespace TinyGUI.ViewModels
                                                  DropBoxGridVisibility = Visibility.Visible;
                                              }
                                          }));
+
+
+        private string _trial;
+
+        public string Trial
+        {
+            get => _trial;
+            set
+            {
+                _trial = value;
+                OnPropertyChanged(nameof(Trial));
+            }
+        }
     }
 }

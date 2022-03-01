@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -9,12 +8,16 @@ using Microsoft.Win32;
 using TinifyAPI;
 using TinyGUI.Properties;
 using TinyGUI.ViewModels;
+using Windows.Services.Store;
 
 namespace TinyGUI.Views
 {
     public partial class MainWindow
     {
+        private StoreContext _context;
+        private StoreAppLicense _appLicense;
         private readonly MainModel _mainModel;
+        public static bool AppStore = false;
 
         public MainWindow()
         {
@@ -29,7 +32,6 @@ namespace TinyGUI.Views
             }
 
             Replace.IsChecked = TinyGUI.Properties.Settings.Default.ReplaceOriginalImage;
-
             _mainModel = (MainModel) DataContext;
             if (string.IsNullOrEmpty(Settings.Default.Key))
             {
@@ -38,6 +40,11 @@ namespace TinyGUI.Views
             else
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Visible;
+            }
+
+            if (AppStore)
+            {
+                InitializeLicense();
             }
         }
 
@@ -290,5 +297,53 @@ namespace TinyGUI.Views
             System.Diagnostics.Process.Start("http://www.redisant.cn/#Family");
             e.Handled = true;
         }
+
+
+        #region AppStore
+
+        private async void InitializeLicense()
+        {
+            if (_context == null)
+            {
+                _context = StoreContext.GetDefault();
+            }
+
+            _appLicense = await _context.GetAppLicenseAsync();
+            if (_appLicense.IsActive)
+            {
+                if (_appLicense.IsTrial)
+                {
+                    _mainModel.Trial = $"This is the trial version. Expiration date: {_appLicense.ExpirationDate}";
+                }
+                else
+                {
+                    _mainModel.Trial = "Not trial version";
+                    // Show the features that are available only with a full license.
+                }
+            }
+
+            // Register for the licenced changed event.
+            _context.OfflineLicensesChanged += context_OfflineLicensesChanged;
+        }
+
+        private async void context_OfflineLicensesChanged(StoreContext sender, object args)
+        {
+            // Reload the license.
+            _appLicense = await _context.GetAppLicenseAsync();
+            if (_appLicense.IsActive)
+            {
+                if (_appLicense.IsTrial)
+                {
+                    _mainModel.Trial = $"This is the trial version. Expiration date: {_appLicense.ExpirationDate}";
+                }
+                else
+                {
+                    _mainModel.Trial = "Not trial version";
+                    // Show the features that are available only with a full license.
+                }
+            }
+        }
+
+        #endregion
     }
 }
