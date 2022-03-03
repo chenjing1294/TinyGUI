@@ -17,7 +17,7 @@ namespace TinyGUI.Views
         private StoreContext _context;
         private StoreAppLicense _appLicense;
         private readonly MainModel _mainModel;
-        public static bool AppStore = false;
+        public static bool AppStore = true;
 
         public MainWindow()
         {
@@ -313,11 +313,12 @@ namespace TinyGUI.Views
             {
                 if (_appLicense.IsTrial)
                 {
-                    _mainModel.Trial = $"This is the trial version. Expiration date: {_appLicense.ExpirationDate}";
+                    _mainModel.Trial = $"Trial version. Expiration at: {DateTimeOffset.Now:yy-MM-dd}";
                 }
                 else
                 {
-                    _mainModel.Trial = "Not trial version";
+                    _mainModel.Trial = string.Empty;
+
                     // Show the features that are available only with a full license.
                 }
             }
@@ -334,11 +335,11 @@ namespace TinyGUI.Views
             {
                 if (_appLicense.IsTrial)
                 {
-                    _mainModel.Trial = $"This is the trial version. Expiration date: {_appLicense.ExpirationDate}";
+                    _mainModel.Trial = $"Trial version. Expiration at: {DateTimeOffset.Now:yy-MM-dd}";
                 }
                 else
                 {
-                    _mainModel.Trial = "Not trial version";
+                    _mainModel.Trial = string.Empty;
                     // Show the features that are available only with a full license.
                 }
             }

@@ -371,5 +371,38 @@
     <MainPackageIdentityName>34760Redisant.RedisAssistant</MainPackageIdentityName>
     <MainPackageIdentityName>34760Redisant.ZooKeeperAssistant</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9PM0SRDVB8GX" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9PM0SRDVB8GX">
+    <BundleInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>X86</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.0.3.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>X64</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.0.3.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.0.3.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.0.3.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.0.3.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+      <PackageInfo>
+        <OsMinVersion>0.0.0.0</OsMinVersion>
+        <PackageArchitecture>Neutral</PackageArchitecture>
+        <PackageMaxArchitectureVersion>1.0.3.0</PackageMaxArchitectureVersion>
+      </PackageInfo>
+    </BundleInfo>
+  </PackageInfoList>
 </StoreAssociation>

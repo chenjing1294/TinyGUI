@@ -14,8 +14,8 @@
     <SplashScreenSource>C:\Users\chenjing\RiderProjects\TinyGUI\TinyGUI\Images\TinyGUI.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\chenjing\RiderProjects\TinyGUI\TinyGUI\Images\TinyGUI.png</PackageLogoSource>
     <UapAppxPackageBuildMode>StoreAndSideload</UapAppxPackageBuildMode>
-    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64</AppxBuildConfigurationSelection>
-    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
 </Project>

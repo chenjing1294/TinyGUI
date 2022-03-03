@@ -118,8 +118,10 @@
       </StackPanel>
       <StackPanel Grid.Row="1" Margin="0 0 5 5" Orientation="Horizontal" HorizontalAlignment="Right"
                   VerticalAlignment="Center">
-        <TextBlock Margin="0 0 10 0" Text="{Binding Trial, Mode=OneWay}" />
-        <TextBlock Foreground="LightGray">
+        <TextBlock Margin="0 0 10 0" FontSize="10"
+                   Background="Red" Foreground="White"
+                   VerticalAlignment="Bottom" Text="{Binding Trial, Mode=OneWay}" />
+        <TextBlock Foreground="LightGray" VerticalAlignment="Bottom">
           <Run Text="{x:Static lang:Language.Version}" />
           <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
             <Run Text="{x:Static local:App.Version}" />
