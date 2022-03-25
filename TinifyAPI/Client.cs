@@ -139,8 +139,7 @@ namespace TinifyAPI
             }
         }
 
-        public async Task<HttpResponseMessage> Request(Method method, Uri url, HttpContent body = null,
-            string mark = null)
+        public async Task<HttpResponseMessage> Request(Method method, Uri url, HttpContent body = null, string mark = null)
         {
             for (short retries = (short) RetryCount; retries >= 0; retries--)
             {

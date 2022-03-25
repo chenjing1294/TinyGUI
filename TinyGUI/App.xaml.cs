@@ -9,12 +9,15 @@ namespace TinyGUI
     public partial class App
     {
         public static bool AppStore = false;
-        public static string Version = "1.0.4.0";
+        public static string Version = "1.0.5.0";
 
         protected override void OnStartup(StartupEventArgs e)
         {
             InitLanguage();
+#if DEBUG
+#else
             RegisterEvents();
+#endif
             base.OnStartup(e);
         }
 

@@ -155,18 +155,9 @@ namespace TinyGUI.Views
 
         private void ByteToFile(byte[] byteArray, string fileName, bool isReplace = false)
         {
-            try
+            using (FileStream fs = new FileStream(fileName, isReplace ? FileMode.Truncate : FileMode.OpenOrCreate, FileAccess.Write))
             {
-                using (FileStream fs =
-                       new FileStream(fileName, isReplace ? FileMode.Truncate : FileMode.OpenOrCreate,
-                           FileAccess.Write))
-                {
-                    fs.Write(byteArray, 0, byteArray.Length);
-                }
-            }
-            catch
-            {
-                // ignored
+                fs.Write(byteArray, 0, byteArray.Length);
             }
         }
 
@@ -178,7 +169,8 @@ namespace TinyGUI.Views
             {
                 foreach (ImageModel imageModel in mainModel.ImageModels)
                 {
-                    if (imageModel.Path.Equals(mark))
+                    string m = System.Web.HttpUtility.UrlEncode(imageModel.Path);
+                    if (m != null && m.Equals(mark))
                     {
                         imageModel.Type = 0;
                         imageModel.Progress = progress;
@@ -191,7 +183,8 @@ namespace TinyGUI.Views
             {
                 foreach (ImageModel imageModel in mainModel.ImageModels)
                 {
-                    if (imageModel.Path.Equals(mark))
+                    string m = System.Web.HttpUtility.UrlEncode(imageModel.Path);
+                    if (m != null && m.Equals(mark))
                     {
                         imageModel.Type = 1;
                         imageModel.Progress = progress;
@@ -210,12 +203,13 @@ namespace TinyGUI.Views
                         try
                         {
                             var sourceData = File.ReadAllBytes(imageModel.Path);
-                            Task<Source> source = Tinify.FromBuffer(sourceData, imageModel.Path);
+                            string mark = System.Web.HttpUtility.UrlEncode(imageModel.Path);
+                            Task<Source> source = Tinify.FromBuffer(sourceData, mark);
                             var newPath = TinyGUI.Properties.Settings.Default.ReplaceOriginalImage
                                 ? imageModel.Path
                                 : $"{Path.GetDirectoryName(imageModel.Path)}\\{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}";
 
-                            ByteToFile(source.ToBuffer(imageModel.Path).Result, newPath, TinyGUI.Properties.Settings.Default.ReplaceOriginalImage);
+                            ByteToFile(source.ToBuffer(mark).Result, newPath, TinyGUI.Properties.Settings.Default.ReplaceOriginalImage);
                         }
                         catch (Exception e)
                         {
