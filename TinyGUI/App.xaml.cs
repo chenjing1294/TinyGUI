@@ -8,6 +8,7 @@ namespace TinyGUI
 {
     public partial class App
     {
+        public static bool AppStore = false;
         public static string Version = "1.0.4.0";
 
         protected override void OnStartup(StartupEventArgs e)

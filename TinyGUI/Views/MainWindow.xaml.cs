@@ -17,7 +17,6 @@ namespace TinyGUI.Views
         private StoreContext _context;
         private StoreAppLicense _appLicense;
         private readonly MainModel _mainModel;
-        public static bool AppStore = true;
 
         public MainWindow()
         {
@@ -42,7 +41,7 @@ namespace TinyGUI.Views
                 _mainModel.DropBoxGridVisibility = Visibility.Visible;
             }
 
-            if (AppStore)
+            if (TinyGUI.App.AppStore)
             {
                 InitializeLicense();
             }
