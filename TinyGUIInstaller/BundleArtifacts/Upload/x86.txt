@@ -1,1 +1,0 @@
-MainPackage=C:\Users\chenjing\RiderProjects\TinyGUI\TinyGUIInstaller\bin\x86\Release\Upload\TinyGUIInstaller_1.0.4.0_x86.appx
