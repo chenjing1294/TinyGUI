@@ -92,6 +92,7 @@
     <Page Include="Styles\Fonts.xaml" />
     <Page Include="Styles\ProgressBar.xaml" />
     <Page Include="Styles\ScrollViewer.xaml" />
+    <Page Include="Styles\Themes\Light.xaml" />
     <Page Include="Templates\CustomListBoxControlTemplate.xaml" />
     <Page Include="Templates\CustomListBoxItemControlTemplate.xaml" />
     <Page Include="Templates\CustomListBoxItemDataTemplate.xaml" />

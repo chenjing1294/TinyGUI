@@ -61,6 +61,15 @@ namespace TinyGUI.Properties.Languages {
         }
         
         /// <summary>
+        ///   查找类似 Back 的本地化字符串。
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Chinese 的本地化字符串。
         /// </summary>
         public static string Chinese {

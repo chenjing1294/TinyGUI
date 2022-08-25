@@ -1,8 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 using Microsoft.Win32;
 using TinifyAPI;
@@ -17,6 +19,7 @@ namespace TinyGUI.Views
         private StoreContext _context;
         private StoreAppLicense _appLicense;
         private readonly MainModel _mainModel;
+        private readonly BackgroundWorker _bgCompressBackgroundWorker;
 
         public MainWindow()
         {
@@ -45,6 +48,15 @@ namespace TinyGUI.Views
             {
                 InitializeLicense();
             }
+
+            _bgCompressBackgroundWorker = new BackgroundWorker()
+            {
+                WorkerSupportsCancellation = true,
+                WorkerReportsProgress = true
+            };
+            _bgCompressBackgroundWorker.DoWork += bgCompressBackgroundWorker_DoWork;
+            _bgCompressBackgroundWorker.ProgressChanged += bgCompressBackgroundWorker_ProgressChanged;
+            _bgCompressBackgroundWorker.RunWorkerCompleted += bgCompressBackgroundWorker_RunWorkCompleted;
         }
 
         protected override void OnClosed(EventArgs e)
@@ -79,7 +91,6 @@ namespace TinyGUI.Views
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
                 _mainModel.KeyGridVisibility = Visibility.Collapsed;
-                _mainModel.SettingGridVisibility = Visibility.Collapsed;
                 _mainModel.ImageListGridVisibility = Visibility.Visible;
                 Compress(_mainModel);
             }
@@ -112,7 +123,6 @@ namespace TinyGUI.Views
             {
                 _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
                 _mainModel.KeyGridVisibility = Visibility.Collapsed;
-                _mainModel.SettingGridVisibility = Visibility.Collapsed;
                 _mainModel.ImageListGridVisibility = Visibility.Visible;
                 Compress(_mainModel);
             }
@@ -155,6 +165,11 @@ namespace TinyGUI.Views
 
         private void ByteToFile(byte[] byteArray, string fileName, bool isReplace = false)
         {
+            if (_bgCompressBackgroundWorker.CancellationPending)
+            {
+                return;
+            }
+
             using (FileStream fs = new FileStream(fileName, isReplace ? FileMode.Truncate : FileMode.OpenOrCreate, FileAccess.Write))
             {
                 fs.Write(byteArray, 0, byteArray.Length);
@@ -163,60 +178,9 @@ namespace TinyGUI.Views
 
         private void Compress(MainModel mainModel)
         {
-            Tinify.Key = Settings.Default.Key;
-
-            Tinify.Client.SendProgress += (mark, progress, totalSize) =>
+            if (!_bgCompressBackgroundWorker.IsBusy)
             {
-                foreach (ImageModel imageModel in mainModel.ImageModels)
-                {
-                    string m = System.Web.HttpUtility.UrlEncode(imageModel.Path);
-                    if (m != null && m.Equals(mark))
-                    {
-                        imageModel.Type = 0;
-                        imageModel.Progress = progress;
-                        imageModel.Size = totalSize ?? 0;
-                    }
-                }
-            };
-
-            Tinify.Client.ReceiveProgress += (mark, progress, totalSize) =>
-            {
-                foreach (ImageModel imageModel in mainModel.ImageModels)
-                {
-                    string m = System.Web.HttpUtility.UrlEncode(imageModel.Path);
-                    if (m != null && m.Equals(mark))
-                    {
-                        imageModel.Type = 1;
-                        imageModel.Progress = progress;
-                        imageModel.Size = totalSize ?? 0;
-                    }
-                }
-            };
-
-            ThreadPool.SetMaxThreads(5, 5);
-            foreach (ImageModel file in mainModel.ImageModels)
-            {
-                ThreadPool.QueueUserWorkItem((obj) =>
-                {
-                    if (obj is ImageModel imageModel)
-                    {
-                        try
-                        {
-                            var sourceData = File.ReadAllBytes(imageModel.Path);
-                            string mark = System.Web.HttpUtility.UrlEncode(imageModel.Path);
-                            Task<Source> source = Tinify.FromBuffer(sourceData, mark);
-                            var newPath = TinyGUI.Properties.Settings.Default.ReplaceOriginalImage
-                                ? imageModel.Path
-                                : $"{Path.GetDirectoryName(imageModel.Path)}\\{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}";
-
-                            ByteToFile(source.ToBuffer(mark).Result, newPath, TinyGUI.Properties.Settings.Default.ReplaceOriginalImage);
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show(e.InnerException != null ? e.InnerException.Message : e.Message, "ERROR");
-                        }
-                    }
-                }, file);
+                _bgCompressBackgroundWorker.RunWorkerAsync(mainModel);
             }
         }
 
@@ -230,7 +194,6 @@ namespace TinyGUI.Views
                 Settings.Default.Save();
                 _mainModel.KeyGridVisibility = Visibility.Collapsed;
                 _mainModel.ImageListGridVisibility = Visibility.Collapsed;
-                _mainModel.SettingGridVisibility = Visibility.Collapsed;
                 _mainModel.DropBoxGridVisibility = Visibility.Visible;
             }
         }
@@ -239,7 +202,6 @@ namespace TinyGUI.Views
         {
             _mainModel.ImageListGridVisibility = Visibility.Collapsed;
             _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
-            _mainModel.SettingGridVisibility = Visibility.Collapsed;
             _mainModel.KeyGridVisibility = Visibility.Visible;
             KeyTextBox.Text = Settings.Default.Key;
             e.Handled = true;
@@ -259,21 +221,11 @@ namespace TinyGUI.Views
 
         private void SettingButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainModel.KeyGridVisibility = Visibility.Collapsed;
-            _mainModel.DropBoxGridVisibility = Visibility.Collapsed;
-            _mainModel.ImageListGridVisibility = Visibility.Collapsed;
-            _mainModel.SettingGridVisibility = Visibility.Visible;
-            e.Handled = true;
-        }
-
-        private void SaveButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            TinyGUI.Properties.Settings.Default.Language = "zh-CN";
             if (ChineseCheckBox.IsChecked == true)
             {
                 TinyGUI.Properties.Settings.Default.Language = "zh-CN";
             }
-            else if (EnglishCheckBox.IsChecked == true)
+            else
             {
                 TinyGUI.Properties.Settings.Default.Language = "en-US";
             }
@@ -281,8 +233,8 @@ namespace TinyGUI.Views
             TinyGUI.Properties.Settings.Default.ReplaceOriginalImage = false || Replace.IsChecked == true;
             _mainModel.KeyGridVisibility = Visibility.Collapsed;
             _mainModel.ImageListGridVisibility = Visibility.Collapsed;
-            _mainModel.SettingGridVisibility = Visibility.Collapsed;
             _mainModel.DropBoxGridVisibility = Visibility.Visible;
+            e.Handled = true;
         }
 
         private void VersionHyperlink_OnClick(object sender, RoutedEventArgs e)
@@ -336,6 +288,97 @@ namespace TinyGUI.Views
                     // Show the features that are available only with a full license.
                 }
             }
+        }
+
+        #endregion
+
+        private void BackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _bgCompressBackgroundWorker.CancelAsync();
+            _mainModel.ImageModels.Clear();
+            _mainModel.KeyGridVisibility = Visibility.Collapsed;
+            _mainModel.ImageListGridVisibility = Visibility.Collapsed;
+            _mainModel.DropBoxGridVisibility = Visibility.Visible;
+            e.Handled = true;
+        }
+
+        #region 压缩进程
+
+        private void bgCompressBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            MainModel mainModel = (MainModel) e.Argument;
+            Tinify.Key = Settings.Default.Key;
+            Tinify.Client.SendProgress = (mark, progress, totalSize) =>
+            {
+                foreach (ImageModel imageModel in mainModel.ImageModels)
+                {
+                    if (_bgCompressBackgroundWorker.CancellationPending)
+                    {
+                        return;
+                    }
+
+                    string m = System.Web.HttpUtility.UrlEncode(imageModel.Path);
+                    if (m != null && m.Equals(mark))
+                    {
+                        imageModel.Type = 0;
+                        imageModel.Progress = progress;
+                        imageModel.Size = totalSize ?? 0;
+                    }
+                }
+            };
+
+            Tinify.Client.ReceiveProgress = (mark, progress, totalSize) =>
+            {
+                foreach (ImageModel imageModel in mainModel.ImageModels)
+                {
+                    if (_bgCompressBackgroundWorker.CancellationPending)
+                    {
+                        return;
+                    }
+
+                    string m = System.Web.HttpUtility.UrlEncode(imageModel.Path);
+                    if (m != null && m.Equals(mark))
+                    {
+                        imageModel.Type = 1;
+                        imageModel.Progress = progress;
+                        imageModel.Size = totalSize ?? 0;
+                    }
+                }
+            };
+
+            ThreadPool.SetMaxThreads(5, 5);
+            foreach (ImageModel file in mainModel.ImageModels)
+            {
+                ThreadPool.QueueUserWorkItem((obj) =>
+                {
+                    if (obj is ImageModel imageModel)
+                    {
+                        try
+                        {
+                            var sourceData = File.ReadAllBytes(imageModel.Path);
+                            string mark = HttpUtility.UrlEncode(imageModel.Path);
+                            Task<Source> source = Tinify.FromBuffer(sourceData, mark);
+                            var newPath = Settings.Default.ReplaceOriginalImage
+                                ? imageModel.Path
+                                : $"{Path.GetDirectoryName(imageModel.Path)}\\{Path.GetFileNameWithoutExtension(imageModel.Path)}({new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}){Path.GetExtension(imageModel.Path)}";
+
+                            ByteToFile(source.ToBuffer(mark).Result, newPath, Settings.Default.ReplaceOriginalImage);
+                        }
+                        catch (Exception exception)
+                        {
+                            //ignore
+                        }
+                    }
+                }, file);
+            }
+        }
+
+        private void bgCompressBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+        }
+
+        private void bgCompressBackgroundWorker_RunWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
         }
 
         #endregion

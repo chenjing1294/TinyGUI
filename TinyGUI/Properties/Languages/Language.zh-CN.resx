@@ -159,4 +159,7 @@
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
 </root>

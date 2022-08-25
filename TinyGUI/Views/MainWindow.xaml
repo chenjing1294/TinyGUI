@@ -4,32 +4,43 @@
         xmlns:vm="clr-namespace:TinyGUI.ViewModels"
         xmlns:local="clr-namespace:TinyGUI"
         xmlns:lang="clr-namespace:TinyGUI.Properties.Languages"
-        Title="TinyGUI" Height="450" Width="350" MinHeight="450" MinWidth="300"
+        Title="TinyGUI" Height="450" Width="550" ResizeMode="CanMinimize"
         Background="White">
   <Window.DataContext>
     <vm:MainModel />
   </Window.DataContext>
   <Grid>
+    <!-- 显示正在压缩的图片列表 -->
     <Grid x:Name="ImageListGrid" Visibility="{Binding ImageListGridVisibility, Mode=OneWay}">
-      <ListBox SelectionMode="Single"
+      <Grid.RowDefinitions>
+        <RowDefinition Height="1*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <ListBox Grid.Row="0" SelectionMode="Single"
+               Grid.RowSpan="2"
+               Background="Transparent"
+               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                BorderThickness="0"
                VirtualizingStackPanel.IsVirtualizing="True"
-               VirtualizingStackPanel.VirtualizationMode="Recycling"
                VirtualizingStackPanel.ScrollUnit="Pixel"
-               ItemsSource="{Binding ImageModels, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+               ItemsSource="{Binding ImageModels, Mode=OneWay}"
                Template="{StaticResource CustomListBoxControlTemplate}"
                ItemTemplate="{StaticResource CustomListBoxItemDataTemplate}"
                ItemContainerStyle="{StaticResource CustomListBoxItemControlTemplate}" />
+      <Button Style="{StaticResource ButtonWithIconStyle}"
+              Grid.Row="1"
+              HorizontalAlignment="Left"
+              x:Name="BackButton"
+              FontFamily="{StaticResource Segoe}"
+              Margin="10 10"
+              ToolTip="{x:Static lang:Language.SupportMe}"
+              Click="BackButton_OnClick"
+              Content="&#xE0A6;" />
     </Grid>
+    <!-- 显示正在压缩的图片列表 -->
+
+    <!-- 重置密钥 -->
     <Grid x:Name="KeyGrid" Visibility="{Binding KeyGridVisibility, Mode=OneWay}">
-      <Border VerticalAlignment="Center" Height="150">
-        <Border.Effect>
-          <BlurEffect Radius="10" />
-        </Border.Effect>
-        <Border.Background>
-          <ImageBrush ImageSource="../Images/th.jpg" Stretch="UniformToFill" />
-        </Border.Background>
-      </Border>
       <Grid VerticalAlignment="Center" Margin="10 0">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
@@ -41,39 +52,45 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="{x:Static lang:Language.SetAPIKey}" Foreground="White"
+          <TextBlock Grid.Row="0" Text="{x:Static lang:Language.SetAPIKey}"
                      FontSize="16"
                      FontFamily="{StaticResource JetBrainsMono}" />
-          <TextBlock Grid.Row="1" FontFamily="{StaticResource JetBrainsMono}">
-            <Run Text="Click to get your API Key:" Foreground="White" />
-            <LineBreak />
+          <TextBlock Grid.Row="1" FontFamily="{StaticResource JetBrainsMono}" Margin="0 10 0 20">
+            <Run Text="Click to get your API Key:" />
             <Hyperlink Click="Hyperlink_OnClick">
               <Run Text="{x:Static lang:Language.KeyUrl}" />
             </Hyperlink>
           </TextBlock>
         </Grid>
 
-        <TextBox Grid.Row="1" Height="25" Margin="0 10"
+        <TextBox Grid.Row="1" Height="25" Margin="0 0 0 10"
                  x:Name="KeyTextBox"
                  FontFamily="{StaticResource JetBrainsMono}"
                  VerticalAlignment="Center" VerticalContentAlignment="Center" />
-        <Button Grid.Row="2" Content="{x:Static lang:Language.Save}"
+        <Button Style="{StaticResource ButtonWithIconStyle}"
+                Grid.Row="2"
+                FontFamily="{StaticResource Segoe}"
                 Margin="0 10"
                 Click="ButtonBase_OnClick"
-                Style="{StaticResource CornerButton}" />
+                Content="&#xE105;" />
       </Grid>
     </Grid>
-    <Grid x:Name="DropFileGrid" Visibility="{Binding DropBoxGridVisibility, Mode=OneWay}">
+    <!-- 重置密钥 -->
+
+    <!-- 显示Drop盒子 -->
+    <Grid x:Name="DropFileGrid" Visibility="{Binding DropBoxGridVisibility, Mode=OneWay}"
+          Margin="20 0 20 0">
       <Grid.RowDefinitions>
         <RowDefinition Height="1*" />
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
       <StackPanel Grid.Row="0" VerticalAlignment="Center">
         <Grid>
           <Rectangle Grid.Row="0" AllowDrop="True"
-                     Width="250" Height="300"
                      Drop="UIElement_OnDrop"
-                     Margin="10"
+                     Margin="0 0 0 10"
+                     Height="180"
                      Fill="WhiteSmoke"
                      RadiusX="10"
                      RadiusY="10"
@@ -88,65 +105,46 @@
           </StackPanel>
         </Grid>
         <Button x:Name="DropButton" Style="{StaticResource CornerButton}"
-                Content="{x:Static lang:Language.ChooseImageFiles}" Width="250"
+                Content="{x:Static lang:Language.ChooseImageFiles}"
                 Click="DropButton_OnClick" />
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+      </StackPanel>
+      <GroupBox Grid.Row="1" Header="{x:Static lang:Language.Settings}" SnapsToDevicePixels="True" Button.Click="SettingButton_OnClick">
+        <StackPanel>
+          <StackPanel Orientation="Horizontal" Margin="0 10">
+            <RadioButton x:Name="ChineseCheckBox" Content="中文" Margin="0 0 10 0"/>
+            <RadioButton x:Name="EnglishCheckBox" Content="English" />
+          </StackPanel>
+          <CheckBox x:Name="Replace" VerticalContentAlignment="Center" Content="{x:Static lang:Language.ReplaceOriginalImage}" />
+        </StackPanel>
+      </GroupBox>
+      <Grid Grid.Row="2" Margin="0 5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
           <Button Style="{StaticResource ButtonWithIconStyle}"
                   x:Name="ResetApiKey"
                   FontFamily="{StaticResource Segoe}"
-                  Margin="0 10 10 0"
                   ToolTip="{x:Static lang:Language.ResetKey}"
                   Click="ResetApiKey_OnClick"
                   Content="&#xe192;" />
           <Button Style="{StaticResource ButtonWithIconStyle}"
                   x:Name="StartButton"
+                  Visibility="Collapsed"
                   FontFamily="{StaticResource Segoe}"
-                  Margin="0 10 10 0"
-                  Foreground="#EAC54F"
                   ToolTip="{x:Static lang:Language.SupportMe}"
                   Click="StartButton_OnClick"
                   Content="&#xe00a;" />
-          <Button Style="{StaticResource ButtonWithIconStyle}"
-                  x:Name="SettingButton"
-                  Margin="0 10 0 0"
-                  FontFamily="{StaticResource Segoe}"
-                  Foreground="Black"
-                  ToolTip="{x:Static lang:Language.Settings}"
-                  Click="SettingButton_OnClick"
-                  Content="&#xe115;" />
         </StackPanel>
-      </StackPanel>
-      <StackPanel Grid.Row="1" Margin="0 0 5 5" Orientation="Horizontal" HorizontalAlignment="Right"
-                  VerticalAlignment="Center">
-        <TextBlock Margin="0 0 10 0" FontSize="10"
-                   Background="Red" Foreground="White"
-                   VerticalAlignment="Bottom" Text="{Binding Trial, Mode=OneWay}" />
-        <TextBlock Foreground="LightGray" VerticalAlignment="Bottom">
+        <TextBlock Grid.Column="1" VerticalAlignment="Center">
           <Run Text="{x:Static lang:Language.Version}" />
           <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
             <Run Text="{x:Static local:App.Version}" />
           </Hyperlink>
         </TextBlock>
-      </StackPanel>
+      </Grid>
     </Grid>
-    <Grid x:Name="SettingGrid" Visibility="{Binding SettingGridVisibility, Mode=OneWay}">
-      <StackPanel Margin="10 10 10 0">
-        <GroupBox Header="{x:Static lang:Language.Lang}" Margin="0 0 0 10">
-          <StackPanel Orientation="Horizontal" Margin="0 10">
-            <RadioButton x:Name="ChineseCheckBox" Content="{x:Static lang:Language.Chinese}" Margin="0 0 10 0" />
-            <RadioButton x:Name="EnglishCheckBox" Content="{x:Static lang:Language.English}" />
-          </StackPanel>
-        </GroupBox>
-        <GroupBox Header="{x:Static lang:Language.File}">
-          <StackPanel Orientation="Horizontal" Margin="0 10">
-            <CheckBox x:Name="Replace" VerticalContentAlignment="Center" Content="{x:Static lang:Language.ReplaceOriginalImage}" Margin="0 0 10 0" />
-          </StackPanel>
-        </GroupBox>
-        <Button Content="{x:Static lang:Language.Save}"
-                Margin="0 10"
-                Click="SaveButton_OnClick"
-                Style="{StaticResource CornerButton}" />
-      </StackPanel>
-    </Grid>
+    <!-- 显示Drop盒子 -->
   </Grid>
 </Window>

@@ -6,65 +6,73 @@
   <converters:StringToImageConverter x:Key="StringToImageConverter" />
   <DataTemplate x:Key="CustomListBoxItemDataTemplate">
     <Grid>
-      <Border x:Name="Border" TextBlock.FontFamily="{StaticResource JetBrainsMono}">
+      <Border x:Name="Border" TextBlock.FontFamily="{StaticResource JetBrainsMono}"
+              CornerRadius="5">
         <Border.Background>
           <ImageBrush Stretch="UniformToFill"
                       ImageSource="{Binding Path, Mode=OneWay, Converter={StaticResource StringToImageConverter}}" />
         </Border.Background>
-        <Border.Effect>
-          <BlurEffect x:Name="BlurEffect" Radius="3" />
-        </Border.Effect>
       </Border>
-      <Grid Background="#33666666">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="1*" />
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="5 0 0 0">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="Auto" />
-          </Grid.ColumnDefinitions>
+      <Border Background="Black" CornerRadius="5">
+        <Border.OpacityMask>
+          <SolidColorBrush Color="#99000000" />
+        </Border.OpacityMask>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Grid Grid.Row="0" Margin="5 0 0 0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="1*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Foreground="White"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Grid.Column="0">
+              <TextBlock.Text>
+                <MultiBinding Converter="{StaticResource SizeConverter}">
+                  <Binding Path="Name" />
+                  <Binding Path="OriFileSize" />
+                </MultiBinding>
+              </TextBlock.Text>
+            </TextBlock>
+            <Button Grid.Column="1" Style="{StaticResource CloseButton}"
+                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                    CommandParameter="{Binding}"
+                    Margin="0 2 2 0"
+                    FontFamily="{StaticResource Segoe}"
+                    Content="&#xe10a;" />
+          </Grid>
+          <TextBlock Margin="5 5 0 10" Foreground="White" Grid.Row="1" FontWeight="Bold"
+                     Text="{Binding Path, Mode=OneWay}" />
+          <ProgressBar Margin="0 5" Grid.Row="2"
+                       x:Name="ProgressBar"
+                       Background="Transparent"
+                       Foreground="#1194CB"
+                       Height="3"
+                       SnapsToDevicePixels="True"
+                       Value="{Binding Progress, Mode=OneWay}" Maximum="100"
+                       Minimum="0" />
           <TextBlock Foreground="White"
+                     Margin="0 5"
                      VerticalAlignment="Center"
-                     Grid.Column="0">
+                     HorizontalAlignment="Center"
+                     Grid.Row="3">
             <TextBlock.Text>
-              <MultiBinding Converter="{StaticResource SizeConverter}">
-                <Binding Path="Name" />
-                <Binding Path="OriFileSize" />
+              <MultiBinding Converter="{StaticResource ProgressConverter}">
+                <Binding Path="Size" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
+                <Binding Path="Progress" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
+                <Binding Path="Type" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
+                <Binding Path="OriFileSize" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
               </MultiBinding>
             </TextBlock.Text>
           </TextBlock>
-          <Button Grid.Column="1" Style="{StaticResource ButtonWithIconStyle}"
-                  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                  CommandParameter="{Binding}"
-                  Margin="0 2 2 0"
-                  FontFamily="{StaticResource Segoe}"
-                  Content="&#xe10a;" />
         </Grid>
-        <TextBlock Margin="5 0" Foreground="White" Grid.Row="1"
-                   Text="{Binding Path, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-        <ProgressBar Margin="0 5" Grid.Row="2"
-                     x:Name="ProgressBar"
-                     Value="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Maximum="100"
-                     Minimum="0" />
-        <TextBlock Foreground="White"
-                   Margin="0 5"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Grid.Row="3">
-          <TextBlock.Text>
-            <MultiBinding Converter="{StaticResource ProgressConverter}">
-              <Binding Path="Size" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
-              <Binding Path="Progress" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
-              <Binding Path="Type" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
-              <Binding Path="OriFileSize" Mode="OneWay" UpdateSourceTrigger="PropertyChanged" />
-            </MultiBinding>
-          </TextBlock.Text>
-        </TextBlock>
-      </Grid>
+      </Border>
     </Grid>
 
     <DataTemplate.Triggers>
@@ -75,22 +83,7 @@
         <Setter TargetName="ProgressBar" Property="Foreground" Value="#17A05D" />
       </DataTrigger>
       <Trigger Property="IsMouseOver" Value="True">
-        <Trigger.EnterActions>
-          <BeginStoryboard>
-            <Storyboard>
-              <DoubleAnimation Storyboard.TargetName="BlurEffect" Storyboard.TargetProperty="Radius" To="10"
-                               Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.EnterActions>
-        <Trigger.ExitActions>
-          <BeginStoryboard>
-            <Storyboard>
-              <DoubleAnimation Storyboard.TargetName="BlurEffect" Storyboard.TargetProperty="Radius" To="3"
-                               Duration="0:0:0.2" />
-            </Storyboard>
-          </BeginStoryboard>
-        </Trigger.ExitActions>
+        <Setter TargetName="Border" Property="BorderBrush" Value="Red" />
       </Trigger>
     </DataTemplate.Triggers>
   </DataTemplate>

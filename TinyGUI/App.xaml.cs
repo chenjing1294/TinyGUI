@@ -8,14 +8,13 @@ namespace TinyGUI
 {
     public partial class App
     {
-        public static bool AppStore = false;
-        public static string Version = "1.0.5.0";
+        public static readonly bool AppStore = true;
+        public static readonly string Version = "1.0.6.0";
 
         protected override void OnStartup(StartupEventArgs e)
         {
             InitLanguage();
-#if DEBUG
-#else
+#if !DEBUG
             RegisterEvents();
 #endif
             base.OnStartup(e);
@@ -36,6 +35,13 @@ namespace TinyGUI
         private void InitLanguage()
         {
             string language = TinyGUI.Properties.Settings.Default.Language;
+            if (language == null || (!language.Equals("en-US") && !language.Equals("zh-CN") && !language.Equals("zh-TW")))
+            {
+                String lang = System.Globalization.CultureInfo.CurrentCulture.Name;
+                language = lang.ToLower().Contains("en") ? "en-US" : "zh-CN";
+                TinyGUI.Properties.Settings.Default.Language = language;
+            }
+
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
         }
 

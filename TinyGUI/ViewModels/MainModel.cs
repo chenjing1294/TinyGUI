@@ -66,18 +66,6 @@ namespace TinyGUI.ViewModels
                 OnPropertyChanged(nameof(DropBoxGridVisibility));
             }
         }
-        
-        private Visibility _settingGridVisibility = Visibility.Collapsed;
-
-        public Visibility SettingGridVisibility
-        {
-            get => _settingGridVisibility;
-            set
-            {
-                _settingGridVisibility = value;
-                OnPropertyChanged(nameof(SettingGridVisibility));
-            }
-        }
 
         private ICommand _deleteCommand;
 

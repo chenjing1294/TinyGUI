@@ -9,7 +9,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ListBoxItem}">
-          <Border Margin="5 2.5" SnapsToDevicePixels="True">
+          <Border Margin="5 5" SnapsToDevicePixels="True">
             <ContentPresenter SnapsToDevicePixels="True" VerticalAlignment="Stretch" />
           </Border>
         </ControlTemplate>
