@@ -1,16 +1,16 @@
-﻿KEY,English,中文（简体）
-Back,Back,返回
-Chinese,Chinese,中文
-ChooseImageFiles,Choose Image Files,选择图像
-DropImageHere,Drop Image Here,把图像拖到此处
-English,English,英文
-File,File,文件
-KeyUrl,https://tinypng.com/developers,https://tinify.cn/developers
-Lang,Language,语言
-ReplaceOriginalImage,Replace Original Image,压缩后替换原文件
-ResetKey,Reset API Key,重置API密钥
-Save,Save,保存
-SetAPIKey,Set Your API Key,设置你的API密钥
-Settings,Settings,设置
-SupportMe,Support Me,给个星星，支持一下
-Version,Version,版本
+﻿KEY,English,中文（简体）,Deutsch
+Back,Back,返回,Zurück
+Chinese,Chinese,中文,Chinesisch
+ChooseImageFiles,Choose Image Files,选择图像,Bilddatei auswählen
+DropImageHere,Drop Image Here,把图像拖到此处,Bild hier ablegen
+English,English,英文,Englisch
+File,File,文件,Datei
+KeyUrl,https://tinypng.com/developers,https://tinify.cn/developers,https://tinify.cn/developers
+Lang,Language,语言,Sprache
+ReplaceOriginalImage,Replace Original Image,压缩后替换原文件,Originales Bild ersetzen
+ResetKey,Reset API Key,重置API密钥,API Key zurücksetzen
+Save,Save,保存,Speichern
+SetAPIKey,Set Your API Key,设置你的API密钥,API Key einfügen
+Settings,Settings,设置,Einstellungen
+SupportMe,Support Me,给个星星，支持一下,Unterstützen Sie mich
+Version,Version,版本,Version
