@@ -3,8 +3,8 @@ bin/
 .vs/
 obj/
 /packages/
-TinyGUIInstaller/
 riderModule.iml
 /_ReSharper.Caches/
 AppPackages/
 BundleArtifacts/
+/Installer/
