@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:TinyGUI.ViewModels"
         xmlns:local="clr-namespace:TinyGUI"
-        xmlns:lang="clr-namespace:TinyGUI.Properties.Languages"
-        Title="TinyGUI" Height="450" Width="550" ResizeMode="CanMinimize"
+        xmlns:p="clr-namespace:TinyGUI.Properties"
+        Title="TinyGUI" Height="500" Width="420" ResizeMode="CanMinimize"
         Background="White">
   <Window.DataContext>
     <vm:MainModel />
@@ -33,7 +33,7 @@
               x:Name="BackButton"
               FontFamily="{StaticResource Segoe}"
               Margin="10 10"
-              ToolTip="{x:Static lang:Language.SupportMe}"
+              ToolTip="{x:Static p:Resources.SupportMe}"
               Click="BackButton_OnClick"
               Content="&#xE0A6;" />
     </Grid>
@@ -52,13 +52,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="{x:Static lang:Language.SetAPIKey}"
+          <TextBlock Grid.Row="0" Text="{x:Static p:Resources.SetAPIKey}"
                      FontSize="16"
                      FontFamily="{StaticResource JetBrainsMono}" />
-          <TextBlock Grid.Row="1" FontFamily="{StaticResource JetBrainsMono}" Margin="0 10 0 20">
+          <TextBlock Grid.Row="1" FontFamily="{StaticResource JetBrainsMono}" Margin="0 10 0 20"
+                     TextWrapping="Wrap">
             <Run Text="Click to get your API Key:" />
             <Hyperlink Click="Hyperlink_OnClick">
-              <Run Text="{x:Static lang:Language.KeyUrl}" />
+              <Run Text="{x:Static p:Resources.KeyUrl}" />
             </Hyperlink>
           </TextBlock>
         </Grid>
@@ -101,20 +102,22 @@
           <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False">
             <Image Source="../Images/TinyGUI.png" Margin="0 0 0 10"
                    Stretch="Uniform" Width="100" Height="100" HorizontalAlignment="Center" />
-            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource JetBrainsMono}" Text="{x:Static lang:Language.DropImageHere}" />
+            <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource JetBrainsMono}" Text="{x:Static p:Resources.DropImageHere}" />
           </StackPanel>
         </Grid>
         <Button x:Name="DropButton" Style="{StaticResource CornerButton}"
-                Content="{x:Static lang:Language.ChooseImageFiles}"
+                Content="{x:Static p:Resources.ChooseImageFiles}"
                 Click="DropButton_OnClick" />
       </StackPanel>
-      <GroupBox Grid.Row="1" Header="{x:Static lang:Language.Settings}" SnapsToDevicePixels="True" Button.Click="SettingButton_OnClick">
+      <GroupBox Grid.Row="1" Header="{x:Static p:Resources.Settings}" SnapsToDevicePixels="True" Button.Click="SettingButton_OnClick">
         <StackPanel>
           <StackPanel Orientation="Horizontal" Margin="0 10">
-            <RadioButton x:Name="ChineseCheckBox" Content="中文" Margin="0 0 10 0"/>
-            <RadioButton x:Name="EnglishCheckBox" Content="English" />
+            <RadioButton x:Name="ChineseCheckBox" Content="中文（简体）" Margin="0 0 10 0" />
+            <RadioButton x:Name="ChineseTraditionalCheckBox" Content="中文（繁体）" Margin="0 0 10 0" />
+            <RadioButton x:Name="EnglishCheckBox" Margin="0 0 10 0" Content="English" />
+            <RadioButton x:Name="DeutschCheckBox" Content="Deutsch" />
           </StackPanel>
-          <CheckBox x:Name="Replace" VerticalContentAlignment="Center" Content="{x:Static lang:Language.ReplaceOriginalImage}" />
+          <CheckBox x:Name="Replace" VerticalContentAlignment="Center" Content="{x:Static p:Resources.ReplaceOriginalImage}" />
         </StackPanel>
       </GroupBox>
       <Grid Grid.Row="2" Margin="0 5">
@@ -126,19 +129,19 @@
           <Button Style="{StaticResource ButtonWithIconStyle}"
                   x:Name="ResetApiKey"
                   FontFamily="{StaticResource Segoe}"
-                  ToolTip="{x:Static lang:Language.ResetKey}"
+                  ToolTip="{x:Static p:Resources.ResetKey}"
                   Click="ResetApiKey_OnClick"
                   Content="&#xe192;" />
           <Button Style="{StaticResource ButtonWithIconStyle}"
                   x:Name="StartButton"
                   Visibility="Collapsed"
                   FontFamily="{StaticResource Segoe}"
-                  ToolTip="{x:Static lang:Language.SupportMe}"
+                  ToolTip="{x:Static p:Resources.SupportMe}"
                   Click="StartButton_OnClick"
                   Content="&#xe00a;" />
         </StackPanel>
         <TextBlock Grid.Column="1" VerticalAlignment="Center">
-          <Run Text="{x:Static lang:Language.Version}" />
+          <Run Text="{x:Static p:Resources.Version}" />
           <Hyperlink NavigateUri="http://www.redisant.cn/#Family" Click="VersionHyperlink_OnClick">
             <Run Text="{x:Static local:App.Version}" />
           </Hyperlink>

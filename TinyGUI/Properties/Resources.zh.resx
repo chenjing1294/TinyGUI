@@ -1,0 +1,62 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="KEY" xml:space="preserve">
+        <value>中文（简体）</value>
+    </data>
+    <data name="Back" xml:space="preserve">
+        <value>返回</value>
+    </data>
+    <data name="Chinese" xml:space="preserve">
+        <value>中文</value>
+    </data>
+    <data name="ChooseImageFiles" xml:space="preserve">
+        <value>选择图像</value>
+    </data>
+    <data name="DropImageHere" xml:space="preserve">
+        <value>把图像拖到此处</value>
+    </data>
+    <data name="English" xml:space="preserve">
+        <value>英文</value>
+    </data>
+    <data name="File" xml:space="preserve">
+        <value>文件</value>
+    </data>
+    <data name="KeyUrl" xml:space="preserve">
+        <value>https://tinify.cn/developers</value>
+    </data>
+    <data name="Lang" xml:space="preserve">
+        <value>语言</value>
+    </data>
+    <data name="ReplaceOriginalImage" xml:space="preserve">
+        <value>压缩后替换原文件</value>
+    </data>
+    <data name="ResetKey" xml:space="preserve">
+        <value>重置API密钥</value>
+    </data>
+    <data name="Save" xml:space="preserve">
+        <value>保存</value>
+    </data>
+    <data name="SetAPIKey" xml:space="preserve">
+        <value>设置你的API密钥</value>
+    </data>
+    <data name="Settings" xml:space="preserve">
+        <value>设置</value>
+    </data>
+    <data name="SupportMe" xml:space="preserve">
+        <value>给个星星，支持一下</value>
+    </data>
+    <data name="Version" xml:space="preserve">
+        <value>版本</value>
+    </data>
+</root>

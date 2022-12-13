@@ -9,7 +9,8 @@ namespace TinyGUI
     public partial class App
     {
         public static readonly bool AppStore = false;
-        public static readonly string Version = "1.0.6.0";
+        public static readonly string Version = "1.0.7.0";
+        public static string[] AvailableLocales = new[] {"zh", "zh-hant", "en", "de-de"};
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -34,15 +35,35 @@ namespace TinyGUI
 
         private void InitLanguage()
         {
-            string language = TinyGUI.Properties.Settings.Default.Language;
-            if (language == null || (!language.Equals("en-US") && !language.Equals("zh-CN") && !language.Equals("zh-TW")))
+            switch (TinyGUI.Properties.Settings.Default.LanguageIndex)
             {
-                String lang = System.Globalization.CultureInfo.CurrentCulture.Name;
-                language = lang.ToLower().Contains("en") ? "en-US" : "zh-CN";
-                TinyGUI.Properties.Settings.Default.Language = language;
-            }
+                case -1:
+                    String lang = System.Globalization.CultureInfo.CurrentCulture.Name;
+                    if (!string.IsNullOrEmpty(lang) && lang.ToLower().Contains("zh"))
+                    {
+                        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(AvailableLocales[0]);
+                        TinyGUI.Properties.Settings.Default.LanguageIndex = 0;
+                    }
+                    else
+                    {
+                        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(AvailableLocales[2]);
+                        TinyGUI.Properties.Settings.Default.LanguageIndex = 2;
+                    }
 
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+                    break;
+                case 0:
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(AvailableLocales[0]);
+                    break;
+                case 1:
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(AvailableLocales[1]);
+                    break;
+                case 2:
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(AvailableLocales[2]);
+                    break;
+                case 3:
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(AvailableLocales[3]);
+                    break;
+            }
         }
 
         private static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

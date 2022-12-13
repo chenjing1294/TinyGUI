@@ -24,13 +24,20 @@ namespace TinyGUI.Views
         public MainWindow()
         {
             InitializeComponent();
-            if (TinyGUI.Properties.Settings.Default.Language == "zh-CN")
+            switch (TinyGUI.Properties.Settings.Default.LanguageIndex)
             {
-                ChineseCheckBox.IsChecked = true;
-            }
-            else
-            {
-                EnglishCheckBox.IsChecked = true;
+                case 0:
+                    ChineseCheckBox.IsChecked = true;
+                    break;
+                case 1:
+                    ChineseTraditionalCheckBox.IsChecked = true;
+                    break;
+                case 2:
+                    EnglishCheckBox.IsChecked = true;
+                    break;
+                case 3:
+                    DeutschCheckBox.IsChecked = true;
+                    break;
             }
 
             Replace.IsChecked = TinyGUI.Properties.Settings.Default.ReplaceOriginalImage;
@@ -223,11 +230,19 @@ namespace TinyGUI.Views
         {
             if (ChineseCheckBox.IsChecked == true)
             {
-                TinyGUI.Properties.Settings.Default.Language = "zh-CN";
+                TinyGUI.Properties.Settings.Default.LanguageIndex = 0;
             }
-            else
+            else if (ChineseTraditionalCheckBox.IsChecked == true)
             {
-                TinyGUI.Properties.Settings.Default.Language = "en-US";
+                TinyGUI.Properties.Settings.Default.LanguageIndex = 1;
+            }
+            else if (EnglishCheckBox.IsChecked == true)
+            {
+                TinyGUI.Properties.Settings.Default.LanguageIndex = 2;
+            }
+            else if (DeutschCheckBox.IsChecked == true)
+            {
+                TinyGUI.Properties.Settings.Default.LanguageIndex = 3;
             }
 
             TinyGUI.Properties.Settings.Default.ReplaceOriginalImage = false || Replace.IsChecked == true;
@@ -239,8 +254,14 @@ namespace TinyGUI.Views
 
         private void VersionHyperlink_OnClick(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.redisant.cn/#Family");
-            e.Handled = true;
+            if (TinyGUI.Properties.Settings.Default.LanguageIndex > 1)
+            {
+                System.Diagnostics.Process.Start("http://www.redisant.com/#Family");
+            }
+            else
+            {
+                System.Diagnostics.Process.Start("http://www.redisant.cn/#Family");
+            }
         }
 
 
@@ -263,12 +284,9 @@ namespace TinyGUI.Views
                 else
                 {
                     _mainModel.Trial = string.Empty;
-
-                    // Show the features that are available only with a full license.
                 }
             }
 
-            // Register for the licenced changed event.
             _context.OfflineLicensesChanged += context_OfflineLicensesChanged;
         }
 
@@ -285,7 +303,6 @@ namespace TinyGUI.Views
                 else
                 {
                     _mainModel.Trial = string.Empty;
-                    // Show the features that are available only with a full license.
                 }
             }
         }

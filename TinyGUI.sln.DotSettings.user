@@ -1,7 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=TinyGUI_002FProperties_002FLanguages_002FLanguage/@EntryIndexedValue">True</s:Boolean>
 	
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=TinyGUI_002FProperties_002FResources/@EntryIndexedValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=TinyGUI_002FProperties_002FResources/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/ShowOnlyErrors/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=c2ca906e_002Dfe17_002D449f_002D962d_002D8f019175abf1_0023TinyGUIInstaller/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

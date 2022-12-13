@@ -62,21 +62,6 @@
     <Compile Include="Converters\ProgressConverter.cs" />
     <Compile Include="Converters\SizeConverter.cs" />
     <Compile Include="Converters\StringToImageConverter.cs" />
-    <Compile Include="Properties\Languages\Language.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Language.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Languages\Language.en-US.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Language.en-US.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Languages\Language.zh-CN.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Language.zh-CN.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -107,21 +92,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Properties\Languages\Language.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.en-US.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Languages\Language.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Languages\Language.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.zh-CN.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh-hant.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.de-de.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
