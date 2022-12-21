@@ -1,6 +1,6 @@
 # TinyGUI
 
-![](./image1.png)
+![](./screenshot.png)
 
 <a href="https://www.microsoft.com/store/apps/9PM0SRDVB8GX"><img src="./microsoft.svg" height="58" width="180" alt="get from microsoft store"></a>
 
