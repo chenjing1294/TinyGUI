@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="KEY" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="Chinese" xml:space="preserve">
-    <value>Chinese</value>
-  </data>
   <data name="ChooseImageFiles" xml:space="preserve">
     <value>Choose Image Files</value>
   </data>
   <data name="DropImageHere" xml:space="preserve">
     <value>Drop Image Here</value>
   </data>
-  <data name="English" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="File" xml:space="preserve">
-    <value>File</value>
-  </data>
   <data name="KeyUrl" xml:space="preserve">
     <value>https://tinypng.com/developers</value>
   </data>
   <data name="Lang" xml:space="preserve">
-    <value>Language</value>
+    <value>Language:</value>
   </data>
   <data name="ReplaceOriginalImage" xml:space="preserve">
     <value>Replace Original Image</value>
-  </data>
-  <data name="ResetKey" xml:space="preserve">
-    <value>Reset API Key</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="SetAPIKey" xml:space="preserve">
-    <value>Set Your API Key</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -162,7 +138,31 @@
   <data name="SupportMe" xml:space="preserve">
     <value>Support Me</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version</value>
+  <data name="SmartCut" xml:space="preserve">
+    <value>Smart cut</value>
+  </data>
+  <data name="Compression" xml:space="preserve">
+    <value>Compression</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UploadTip" xml:space="preserve">
+    <value>You can upload any JPEG or PNG image to Tinify API for compression. We will automatically detect the image type and optimize accordingly using the TinyPNG or TinyJPG engine.</value>
+  </data>
+  <data name="ScaleTip" xml:space="preserve">
+    <value>Scale down the image. You must provide target width or height, not both. The reduced image will have a certain width or height.</value>
+  </data>
+  <data name="FitTip" xml:space="preserve">
+    <value>Scale down the image so that it fits the given size. You must provide both width and height. The downscaled image will not exceed any of these dimensions.</value>
+  </data>
+  <data name="CoverTip" xml:space="preserve">
+    <value>Scale down the image and crop the image if necessary. The result has the exact given dimensions. Which part of the picture will be cropped is determined automatically. Smart algorithms determine the most important areas in the image.</value>
+  </data>
+  <data name="ThumbTip" xml:space="preserve">
+    <value>Detect images with simple backgrounds. The image will be scaled down to the width and height you provide. If a single object is detected in an image, the algorithm will add more background where necessary, or crop out unimportant parts.</value>
+  </data>
+  <data name="Redisant" xml:space="preserve">
+    <value>https://www.redisant.com</value>
   </data>
 </root>

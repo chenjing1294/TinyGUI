@@ -59,28 +59,23 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\Command.cs" />
-    <Compile Include="Converters\ProgressConverter.cs" />
-    <Compile Include="Converters\SizeConverter.cs" />
-    <Compile Include="Converters\StringToImageConverter.cs" />
+    <Compile Include="Converters\IsVisibleConverter.cs" />
+    <Compile Include="Converters\ScaleBorderThicknessConverter.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ImageModel.cs" />
     <Compile Include="ViewModels\MainModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Styles\Button.xaml" />
-    <Page Include="Styles\CustomGroupBoxStyle.xaml" />
+    <Page Include="Styles\ComboBoxStyle.xaml" />
     <Page Include="Styles\Fonts.xaml" />
-    <Page Include="Styles\ProgressBar.xaml" />
     <Page Include="Styles\ScrollViewer.xaml" />
-    <Page Include="Styles\Themes\Light.xaml" />
-    <Page Include="Templates\CustomListBoxControlTemplate.xaml" />
-    <Page Include="Templates\CustomListBoxItemControlTemplate.xaml" />
-    <Page Include="Templates\CustomListBoxItemDataTemplate.xaml" />
+    <Page Include="Styles\TextBox.xaml" />
     <Page Include="Views\MainWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +109,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Fonts\iconfont.ttf" />
     <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Bold-Italic.ttf" />
     <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Bold.ttf" />
     <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-BoldItalic.ttf" />
@@ -131,27 +125,21 @@
     <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-Thin.ttf" />
     <Resource Include="Fonts\JetBrainsMono\JetBrainsMono-ThinItalic.ttf" />
     <Resource Include="Fonts\segoe.ttf" />
-    <Resource Include="Images\th.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TinifyAPI\TinifyAPI.csproj">
-      <Project>{d526ebad-5864-475d-a7b1-252e4a89f3b5}</Project>
-      <Name>TinifyAPI</Name>
-    </ProjectReference>
+    <Resource Include="Fonts\Font Awesome 6 Pro-Solid-900.otf" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\panda.ico" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Images\TinyGUI.png" />
     <Resource Include="panda.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\TinyGUI.png" />
+    <Resource Include="Images\scale\cover.png" />
+    <Resource Include="Images\scale\fit.png" />
+    <Resource Include="Images\scale\scale.png" />
+    <Resource Include="Images\scale\thumb.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.22000.196</Version>
-    </PackageReference>
+    <PackageReference Include="Tinify" Version="1.6.0" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

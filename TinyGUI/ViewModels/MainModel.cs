@@ -1,96 +1,105 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using TinyGUI.Commands;
-
-namespace TinyGUI.ViewModels
+﻿namespace TinyGUI.ViewModels
 {
-    public class MainModel : INotifyPropertyChanged
+    public class MainModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private bool _compressRadioButtonIsChecked = true;
 
-        private void OnPropertyChanged(string propertyName = null)
+        public bool CompressRadioButtonIsChecked
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _compressRadioButtonIsChecked;
+            set => SetField(ref _compressRadioButtonIsChecked, value, nameof(CompressRadioButtonIsChecked));
+        }
+
+        private bool _smartCutRadioButtonIsChecked;
+
+        public bool SmartCutRadioButtonIsChecked
+        {
+            get => _smartCutRadioButtonIsChecked;
+            set => SetField(ref _smartCutRadioButtonIsChecked, value, nameof(SmartCutRadioButtonIsChecked));
+        }
+
+        private bool _settingRadioButtonIsChecked;
+
+        public bool SettingRadioButtonIsChecked
+        {
+            get => _settingRadioButtonIsChecked;
+            set => SetField(ref _settingRadioButtonIsChecked, value, nameof(SettingRadioButtonIsChecked));
         }
 
 
-        private ObservableCollection<ImageModel> _imageModels = new ObservableCollection<ImageModel>();
+        #region 智能剪切
 
-        public ObservableCollection<ImageModel> ImageModels
+        private string _imageWidth = string.Empty;
+
+        public string ImageWidth
         {
-            get => _imageModels;
-            set
-            {
-                _imageModels = value;
-                OnPropertyChanged(nameof(ImageModels));
-            }
+            get => _imageWidth;
+            set => SetField(ref _imageWidth, value, nameof(ImageWidth));
         }
 
+        private string _imageHeight = string.Empty;
 
-        private Visibility _imageListGridVisibility = Visibility.Collapsed;
-
-        public Visibility ImageListGridVisibility
+        public string ImageHeight
         {
-            get => _imageListGridVisibility;
-            set
-            {
-                _imageListGridVisibility = value;
-                OnPropertyChanged(nameof(ImageListGridVisibility));
-            }
+            get => _imageHeight;
+            set => SetField(ref _imageHeight, value, nameof(ImageHeight));
         }
 
-        private Visibility _keyGridVisibility = Visibility.Collapsed;
+        private bool _scaleRadioButtonIsChecked = true;
 
-        public Visibility KeyGridVisibility
+        public bool ScaleRadioButtonIsChecked
         {
-            get => _keyGridVisibility;
-            set
-            {
-                _keyGridVisibility = value;
-                OnPropertyChanged(nameof(KeyGridVisibility));
-            }
+            get => _scaleRadioButtonIsChecked;
+            set => SetField(ref _scaleRadioButtonIsChecked, value, nameof(ScaleRadioButtonIsChecked));
         }
 
-        private Visibility _dropBoxGridVisibility = Visibility.Collapsed;
+        private bool _fitRadioButtonIsChecked;
 
-        public Visibility DropBoxGridVisibility
+        public bool FitRadioButtonIsChecked
         {
-            get => _dropBoxGridVisibility;
-            set
-            {
-                _dropBoxGridVisibility = value;
-                OnPropertyChanged(nameof(DropBoxGridVisibility));
-            }
+            get => _fitRadioButtonIsChecked;
+            set => SetField(ref _fitRadioButtonIsChecked, value, nameof(FitRadioButtonIsChecked));
         }
 
-        private ICommand _deleteCommand;
+        private bool _coverRadioButtonIsChecked;
 
-        public ICommand DeleteCommand => _deleteCommand ??
-                                         (_deleteCommand = new Command((parameter) =>
-                                         {
-                                             ImageModels.Remove(parameter as ImageModel);
-                                             if (!ImageModels.Any())
-                                             {
-                                                 KeyGridVisibility = Visibility.Collapsed;
-                                                 ImageListGridVisibility = Visibility.Collapsed;
-                                                 DropBoxGridVisibility = Visibility.Visible;
-                                             }
-                                         }));
-
-
-        private string _trial;
-
-        public string Trial
+        public bool CoverRadioButtonIsChecked
         {
-            get => _trial;
+            get => _coverRadioButtonIsChecked;
+            set => SetField(ref _coverRadioButtonIsChecked, value, nameof(CoverRadioButtonIsChecked));
+        }
+
+        private bool _thumbRadioButtonIsChecked;
+
+        public bool ThumbRadioButtonIsChecked
+        {
+            get => _thumbRadioButtonIsChecked;
+            set => SetField(ref _thumbRadioButtonIsChecked, value, nameof(ThumbRadioButtonIsChecked));
+        }
+
+        #endregion
+
+        private bool _isIndeterminate = false;
+
+        public bool IsIndeterminate
+        {
+            get => _isIndeterminate;
+            set => SetField(ref _isIndeterminate, value, nameof(IsIndeterminate));
+        }
+
+        private double _progressBarValue = 0.0;
+
+        public double ProgressBarValue
+        {
+            get => _progressBarValue;
             set
             {
-                _trial = value;
-                OnPropertyChanged(nameof(Trial));
+                if (value > 0)
+                {
+                    IsIndeterminate = false;
+                }
+
+                SetField(ref _progressBarValue, value, nameof(ProgressBarValue));
             }
         }
     }

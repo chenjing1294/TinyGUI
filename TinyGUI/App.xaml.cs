@@ -8,9 +8,8 @@ namespace TinyGUI
 {
     public partial class App
     {
-        public static readonly bool AppStore = false;
-        public static readonly string Version = "1.0.7.0";
-        public static string[] AvailableLocales = new[] {"zh", "zh-hant", "en", "de-de"};
+        public static readonly string Version = "1.0.8.0";
+        private static readonly string[] AvailableLocales = {"zh", "zh-hant", "en", "de-de"};
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -102,8 +101,7 @@ namespace TinyGUI
         }
 
         //UI线程未捕获异常处理事件
-        private static void App_DispatcherUnhandledException(object sender,
-            System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        private static void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             try
             {

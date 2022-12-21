@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <FontFamily x:Key="Segoe">pack://application:,,,/Fonts/#Segoe MDL2 Assets</FontFamily>
-  <FontFamily x:Key="IconFont">pack://application:,,,/Fonts/#iconfont</FontFamily>
+  <FontFamily x:Key="FontAwesome">pack://application:,,,/Fonts/#Font Awesome 6 Pro</FontFamily>
   <FontFamily x:Key="JetBrainsMono">pack://application:,,,/Fonts/JetBrainsMono/#JetBrains Mono</FontFamily>
 </ResourceDictionary>

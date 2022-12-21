@@ -60,29 +60,29 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back.
-        /// </summary>
-        public static string Back {
-            get {
-                return ResourceManager.GetString("Back", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chinese.
-        /// </summary>
-        public static string Chinese {
-            get {
-                return ResourceManager.GetString("Chinese", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Choose Image Files.
         /// </summary>
         public static string ChooseImageFiles {
             get {
                 return ResourceManager.GetString("ChooseImageFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compression.
+        /// </summary>
+        public static string Compression {
+            get {
+                return ResourceManager.GetString("Compression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale down the image and crop the image if necessary. The result has the exact given dimensions. Which part of the picture will be cropped is determined automatically. Smart algorithms determine the most important areas in the image..
+        /// </summary>
+        public static string CoverTip {
+            get {
+                return ResourceManager.GetString("CoverTip", resourceCulture);
             }
         }
         
@@ -96,29 +96,11 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English.
+        ///   Looks up a localized string similar to Scale down the image so that it fits the given size. You must provide both width and height. The downscaled image will not exceed any of these dimensions..
         /// </summary>
-        public static string English {
+        public static string FitTip {
             get {
-                return ResourceManager.GetString("English", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File.
-        /// </summary>
-        public static string File {
-            get {
-                return ResourceManager.GetString("File", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English.
-        /// </summary>
-        public static string KEY {
-            get {
-                return ResourceManager.GetString("KEY", resourceCulture);
+                return ResourceManager.GetString("FitTip", resourceCulture);
             }
         }
         
@@ -132,11 +114,20 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
+        ///   Looks up a localized string similar to Language:.
         /// </summary>
         public static string Lang {
             get {
                 return ResourceManager.GetString("Lang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.redisant.com.
+        /// </summary>
+        public static string Redisant {
+            get {
+                return ResourceManager.GetString("Redisant", resourceCulture);
             }
         }
         
@@ -150,29 +141,11 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset API Key.
+        ///   Looks up a localized string similar to Scale down the image. You must provide target width or height, not both. The reduced image will have a certain width or height..
         /// </summary>
-        public static string ResetKey {
+        public static string ScaleTip {
             get {
-                return ResourceManager.GetString("ResetKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save.
-        /// </summary>
-        public static string Save {
-            get {
-                return ResourceManager.GetString("Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set Your API Key.
-        /// </summary>
-        public static string SetAPIKey {
-            get {
-                return ResourceManager.GetString("SetAPIKey", resourceCulture);
+                return ResourceManager.GetString("ScaleTip", resourceCulture);
             }
         }
         
@@ -186,6 +159,15 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Smart cut.
+        /// </summary>
+        public static string SmartCut {
+            get {
+                return ResourceManager.GetString("SmartCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Support Me.
         /// </summary>
         public static string SupportMe {
@@ -195,11 +177,29 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version.
+        ///   Looks up a localized string similar to Detect images with simple backgrounds. The image will be scaled down to the width and height you provide. If a single object is detected in an image, the algorithm will add more background where necessary, or crop out unimportant parts..
         /// </summary>
-        public static string Version {
+        public static string ThumbTip {
             get {
-                return ResourceManager.GetString("Version", resourceCulture);
+                return ResourceManager.GetString("ThumbTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        public static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can upload any JPEG or PNG image to Tinify API for compression. We will automatically detect the image type and optimize accordingly using the TinyPNG or TinyJPG engine..
+        /// </summary>
+        public static string UploadTip {
+            get {
+                return ResourceManager.GetString("UploadTip", resourceCulture);
             }
         }
     }

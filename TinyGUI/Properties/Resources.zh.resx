@@ -11,44 +11,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="KEY" xml:space="preserve">
-        <value>中文（简体）</value>
-    </data>
-    <data name="Back" xml:space="preserve">
-        <value>返回</value>
-    </data>
-    <data name="Chinese" xml:space="preserve">
-        <value>中文</value>
-    </data>
     <data name="ChooseImageFiles" xml:space="preserve">
         <value>选择图像</value>
     </data>
     <data name="DropImageHere" xml:space="preserve">
         <value>把图像拖到此处</value>
     </data>
-    <data name="English" xml:space="preserve">
-        <value>英文</value>
-    </data>
-    <data name="File" xml:space="preserve">
-        <value>文件</value>
-    </data>
     <data name="KeyUrl" xml:space="preserve">
         <value>https://tinify.cn/developers</value>
     </data>
     <data name="Lang" xml:space="preserve">
-        <value>语言</value>
+        <value>语言：</value>
     </data>
     <data name="ReplaceOriginalImage" xml:space="preserve">
         <value>压缩后替换原文件</value>
-    </data>
-    <data name="ResetKey" xml:space="preserve">
-        <value>重置API密钥</value>
-    </data>
-    <data name="Save" xml:space="preserve">
-        <value>保存</value>
-    </data>
-    <data name="SetAPIKey" xml:space="preserve">
-        <value>设置你的API密钥</value>
     </data>
     <data name="Settings" xml:space="preserve">
         <value>设置</value>
@@ -56,7 +32,31 @@
     <data name="SupportMe" xml:space="preserve">
         <value>给个星星，支持一下</value>
     </data>
-    <data name="Version" xml:space="preserve">
-        <value>版本</value>
+    <data name="SmartCut" xml:space="preserve">
+        <value>智能剪切</value>
+    </data>
+    <data name="Compression" xml:space="preserve">
+        <value>压缩图片</value>
+    </data>
+    <data name="Upload" xml:space="preserve">
+        <value>直接上传</value>
+    </data>
+    <data name="UploadTip" xml:space="preserve">
+        <value>您可以上传任何JPEG或PNG图片到Tinify API来进行压缩。我们将自动检测图片类型并相应的使用TinyPNG或TinyJPG引擎进行优化。</value>
+    </data>
+    <data name="ScaleTip" xml:space="preserve">
+        <value>按比例缩小图片。您必须提供目标width或height，不能同时提供两者。缩小后的图片会有确定的宽度或者高度。</value>
+    </data>
+    <data name="FitTip" xml:space="preserve">
+        <value>按比例缩小图片，使其适合（fit）给定的尺寸。你必须同时提供width和height。缩小后的图像不会超过这些尺寸中的任何一个。</value>
+    </data>
+    <data name="CoverTip" xml:space="preserve">
+        <value>按比例缩小图片，如有必要裁切图片。结果具有准确的给定尺寸。 图片中哪个部分将被裁切是自动决定的。智能算法确定图像中最重要的区域。</value>
+    </data>
+    <data name="ThumbTip" xml:space="preserve">
+        <value>检测具有简单背景的图片。图片会被缩小到您提供的width和height的大小。 如果一个图片被检测到独立物体，算法将在必要位置添加更多的背景，或者裁切掉不重要的部分。</value>
+    </data>
+    <data name="Redisant" xml:space="preserve">
+        <value>http://www.redisant.cn</value>
     </data>
 </root>

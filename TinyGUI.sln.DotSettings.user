@@ -4,4 +4,5 @@
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=TinyGUI_002FProperties_002FResources/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/ShowOnlyErrors/@EntryValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=fd9fe64a_002De702_002D45e0_002D8d2e_002D967157f3da3c_0023Installer/@EntryIndexedValue">True</s:Boolean>
 	</wpf:ResourceDictionary>

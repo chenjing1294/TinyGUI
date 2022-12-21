@@ -11,44 +11,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="KEY" xml:space="preserve">
-        <value>Deutsch</value>
-    </data>
-    <data name="Back" xml:space="preserve">
-        <value>Zurück</value>
-    </data>
-    <data name="Chinese" xml:space="preserve">
-        <value>Chinesisch</value>
-    </data>
     <data name="ChooseImageFiles" xml:space="preserve">
         <value>Bilddatei auswählen</value>
     </data>
     <data name="DropImageHere" xml:space="preserve">
         <value>Bild hier ablegen</value>
     </data>
-    <data name="English" xml:space="preserve">
-        <value>Englisch</value>
-    </data>
     <data name="KeyUrl" xml:space="preserve">
         <value>https://tinypng.com/developers</value>
     </data>
-    <data name="File" xml:space="preserve">
-        <value>Datei</value>
-    </data>
     <data name="Lang" xml:space="preserve">
-        <value>Sprache</value>
+        <value>Sprache:</value>
     </data>
     <data name="ReplaceOriginalImage" xml:space="preserve">
         <value>Originales Bild ersetzen</value>
-    </data>
-    <data name="ResetKey" xml:space="preserve">
-        <value>API Key zurücksetzen</value>
-    </data>
-    <data name="Save" xml:space="preserve">
-        <value>Speichern</value>
-    </data>
-    <data name="SetAPIKey" xml:space="preserve">
-        <value>API Key einfügen</value>
     </data>
     <data name="Settings" xml:space="preserve">
         <value>Einstellungen</value>
@@ -56,7 +32,31 @@
     <data name="SupportMe" xml:space="preserve">
         <value>Unterstützen Sie mich</value>
     </data>
-    <data name="Version" xml:space="preserve">
-        <value>Version</value>
+    <data name="SmartCut" xml:space="preserve">
+        <value>Intelligenter schnitt</value>
+    </data>
+    <data name="Compression" xml:space="preserve">
+        <value>Kompression</value>
+    </data>
+    <data name="Upload" xml:space="preserve">
+        <value>Hochladen</value>
+    </data>
+    <data name="UploadTip" xml:space="preserve">
+        <value>Sie können jedes JPEG- oder PNG-Bild zur Komprimierung in die Tinify-API hochladen. Wir werden den Bildtyp automatisch erkennen und mithilfe der TinyPNG- oder TinyJPG-Engine entsprechend optimieren.</value>
+    </data>
+    <data name="ScaleTip" xml:space="preserve">
+        <value>Verkleinern Sie das Bild. Sie müssen die Zielbreite oder -höhe angeben, nicht beides. Das verkleinerte Bild hat eine bestimmte Breite oder Höhe.</value>
+    </data>
+    <data name="FitTip" xml:space="preserve">
+        <value>Verkleinern Sie das Bild, sodass es der angegebenen Größe entspricht. Sie müssen Breite und Höhe angeben. Das verkleinerte Bild überschreitet keine dieser Abmessungen.</value>
+    </data>
+    <data name="CoverTip" xml:space="preserve">
+        <value>Verkleinern Sie das Bild und schneiden Sie es bei Bedarf zu. Das Ergebnis hat genau die angegebenen Maße. Welcher Teil des Bildes beschnitten wird, wird automatisch bestimmt. Intelligente Algorithmen ermitteln die wichtigsten Bereiche im Bild.</value>
+    </data>
+    <data name="ThumbTip" xml:space="preserve">
+        <value>Erkennen Sie Bilder mit einfachen Hintergründen. Das Bild wird auf die von Ihnen angegebene Breite und Höhe verkleinert. Wenn ein einzelnes Objekt in einem Bild erkannt wird, fügt der Algorithmus bei Bedarf mehr Hintergrund hinzu oder schneidet unwichtige Teile aus.</value>
+    </data>
+    <data name="Redisant" xml:space="preserve">
+        <value>https://www.redisant.com</value>
     </data>
 </root>
