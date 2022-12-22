@@ -165,4 +165,28 @@
   <data name="Redisant" xml:space="preserve">
     <value>https://www.redisant.com</value>
   </data>
+  <data name="PreserveMetadata" xml:space="preserve">
+    <value>Preserve metadata:</value>
+  </data>
+  <data name="PreserveMetadataTip" xml:space="preserve">
+    <value>You can specify metadata that is copied from the uploaded image to the compressed version. Currently supports preserving copyright information, GPS location and creation date. Preserving metadata increases the size of compressed files, so you should only keep important metadata.</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="CopyrightTip" xml:space="preserve">
+    <value>All copyright information reserved. Include EXIF copyright notation (JPEG), XMP permission notation (PNG), and Photoshop copyright notation or URL. Use up to 90 bytes, plus the length of the copyright data.</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LocationTip" xml:space="preserve">
+    <value>Any creation date or time is preserved. This is the moment when an image or photo is initially created. Includes EXIF raw datetime stamp (JPEG) or XMP creation time (PNG). Uses about 70 extra bytes.</value>
+  </data>
+  <data name="CreationTime" xml:space="preserve">
+    <value>Creation date</value>
+  </data>
+  <data name="CreationTimeTip" xml:space="preserve">
+    <value>Any GPS location information that describes where the picture or photo was created is preserved. Contains EXIF GPS Dimensions and GPS Accuracy tags (JPEG). Uses about 130 extra bytes.</value>
+  </data>
 </root>

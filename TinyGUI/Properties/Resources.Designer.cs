@@ -78,11 +78,47 @@ namespace TinyGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copyright.
+        /// </summary>
+        public static string Copyright {
+            get {
+                return ResourceManager.GetString("Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All copyright information reserved. Include EXIF copyright notation (JPEG), XMP permission notation (PNG), and Photoshop copyright notation or URL. Use up to 90 bytes, plus the length of the copyright data..
+        /// </summary>
+        public static string CopyrightTip {
+            get {
+                return ResourceManager.GetString("CopyrightTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scale down the image and crop the image if necessary. The result has the exact given dimensions. Which part of the picture will be cropped is determined automatically. Smart algorithms determine the most important areas in the image..
         /// </summary>
         public static string CoverTip {
             get {
                 return ResourceManager.GetString("CoverTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creation date.
+        /// </summary>
+        public static string CreationTime {
+            get {
+                return ResourceManager.GetString("CreationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any GPS location information that describes where the picture or photo was created is preserved. Contains EXIF GPS Dimensions and GPS Accuracy tags (JPEG). Uses about 130 extra bytes..
+        /// </summary>
+        public static string CreationTimeTip {
+            get {
+                return ResourceManager.GetString("CreationTimeTip", resourceCulture);
             }
         }
         
@@ -119,6 +155,42 @@ namespace TinyGUI.Properties {
         public static string Lang {
             get {
                 return ResourceManager.GetString("Lang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any creation date or time is preserved. This is the moment when an image or photo is initially created. Includes EXIF raw datetime stamp (JPEG) or XMP creation time (PNG). Uses about 70 extra bytes..
+        /// </summary>
+        public static string LocationTip {
+            get {
+                return ResourceManager.GetString("LocationTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve metadata:.
+        /// </summary>
+        public static string PreserveMetadata {
+            get {
+                return ResourceManager.GetString("PreserveMetadata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can specify metadata that is copied from the uploaded image to the compressed version. Currently supports preserving copyright information, GPS location and creation date. Preserving metadata increases the size of compressed files, so you should only keep important metadata..
+        /// </summary>
+        public static string PreserveMetadataTip {
+            get {
+                return ResourceManager.GetString("PreserveMetadataTip", resourceCulture);
             }
         }
         

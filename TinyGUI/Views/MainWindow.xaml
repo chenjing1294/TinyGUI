@@ -273,7 +273,7 @@
         <TextBlock Grid.Column="0"
                    Text="API Key:"
                    FontWeight="Bold"
-                   Foreground="#E2E2E2"
+                   Foreground="White"
                    VerticalAlignment="Center" />
         <TextBox Grid.Column="1"
                  x:Name="KeyTextBox"
@@ -285,6 +285,43 @@
                  VerticalContentAlignment="Center"
                  Background="Transparent" />
       </Grid>
+      <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+        <TextBlock Text="{x:Static p:Resources.PreserveMetadata}"
+                   Foreground="White" VerticalAlignment="Center">
+          <TextBlock.ToolTip>
+            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{x:Static p:Resources.PreserveMetadataTip}" />
+          </TextBlock.ToolTip>
+        </TextBlock>
+        <CheckBox Margin="0 0 5 0"
+                  Style="{StaticResource CustomCheckBoxStyle}"
+                  Foreground="#E2E2E2"
+                  IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=MetaCopyright, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Content="{x:Static p:Resources.Copyright}"
+                  VerticalAlignment="Center">
+          <CheckBox.ToolTip>
+            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{x:Static p:Resources.CopyrightTip}" />
+          </CheckBox.ToolTip>
+        </CheckBox>
+        <CheckBox Margin="0 0 5 0"
+                  Style="{StaticResource CustomCheckBoxStyle}"
+                  Foreground="#E2E2E2"
+                  IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=MetaLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Content="{x:Static p:Resources.Location}"
+                  VerticalAlignment="Center">
+          <CheckBox.ToolTip>
+            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{x:Static p:Resources.LocationTip}" />
+          </CheckBox.ToolTip>
+        </CheckBox>
+        <CheckBox Foreground="#E2E2E2"
+                  Style="{StaticResource CustomCheckBoxStyle}"
+                  IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=MetaCreationTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Content="{x:Static p:Resources.CreationTime}"
+                  VerticalAlignment="Center">
+          <CheckBox.ToolTip>
+            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{x:Static p:Resources.CreationTimeTip}" />
+          </CheckBox.ToolTip>
+        </CheckBox>
+      </StackPanel>
       <StackPanel Margin="0 10 0 0">
         <StackPanel Orientation="Horizontal">
           <CheckBox Style="{StaticResource CustomCheckBoxStyle}"

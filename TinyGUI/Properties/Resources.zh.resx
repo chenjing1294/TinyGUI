@@ -59,4 +59,28 @@
     <data name="Redisant" xml:space="preserve">
         <value>http://www.redisant.cn</value>
     </data>
+    <data name="PreserveMetadata" xml:space="preserve">
+        <value>保留元数据：</value>
+    </data>
+    <data name="PreserveMetadataTip" xml:space="preserve">
+        <value>您可以指定从上传图片拷贝到压缩版本的元数据。当前支持保留版权信息，GPS位置和创建日期。 保留元数据会增加压缩文件的大小，因此您应该只保留重要的元数据。</value>
+    </data>
+    <data name="Copyright" xml:space="preserve">
+        <value>版权信息</value>
+    </data>
+    <data name="CopyrightTip" xml:space="preserve">
+        <value>保留所有版权信息。包括EXIF版权标记（JPEG），XMP权限标记（PNG）以及Photoshop版权标记或URL。 使用最多90个字节，再加上版权数据的长度。</value>
+    </data>
+    <data name="Location" xml:space="preserve">
+        <value>位置信息</value>
+    </data>
+    <data name="LocationTip" xml:space="preserve">
+        <value>保留任何创建日期或时间。这是最初创建图像或照片的时刻。包括EXIF原始日期时间标记（JPEG）或XMP创建时间（PNG）。使用大约70个额外字节。</value>
+    </data>
+    <data name="CreationTime" xml:space="preserve">
+        <value>创建日期</value>
+    </data>
+    <data name="CreationTimeTip" xml:space="preserve">
+        <value>保留任何GPS位置信息，该信息描述图片或者照片创建的位置。包含EXIF GPS维度和GPS精度标签（JPEG）。使用大约130个额外字节。</value>
+    </data>
 </root>

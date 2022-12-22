@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using Microsoft.Win32;
 using TinifyAPI;
 using TinyGUI.ViewModels;
@@ -149,6 +150,7 @@ namespace TinyGUI.Views
             foreach (string path in imgPaths)
             {
                 var source = Tinify.FromFile(path);
+                source = Preserve(source);
                 string savePath = path;
                 if (!TinyGUI.Properties.Settings.Default.ReplaceOriginalImage)
                 {
@@ -182,6 +184,7 @@ namespace TinyGUI.Views
             foreach (string path in imgPaths)
             {
                 var source = Tinify.FromFile(path);
+                source = Preserve(source);
                 string savePath = path;
                 if (!TinyGUI.Properties.Settings.Default.ReplaceOriginalImage)
                 {
@@ -243,6 +246,33 @@ namespace TinyGUI.Views
 
             _mainModel.IsIndeterminate = false;
             _mainModel.ProgressBarValue = 0;
+        }
+
+        //保留元数据
+        private Task<Source> Preserve(Task<Source> source)
+        {
+            List<string> metas = new List<string>();
+            if (TinyGUI.Properties.Settings.Default.MetaCopyright)
+            {
+                metas.Add("copyright");
+            }
+
+            if (TinyGUI.Properties.Settings.Default.MetaLocation)
+            {
+                metas.Add("location");
+            }
+
+            if (TinyGUI.Properties.Settings.Default.MetaCreationTime)
+            {
+                metas.Add("creation");
+            }
+
+            if (metas.Count > 0)
+            {
+                return source.Preserve(metas.ToArray());
+            }
+
+            return source;
         }
 
         private static long GetTimeStamp()

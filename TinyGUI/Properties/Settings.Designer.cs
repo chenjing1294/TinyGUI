@@ -57,5 +57,41 @@ namespace TinyGUI.Properties {
                 this["LanguageIndex"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MetaCopyright {
+            get {
+                return ((bool)(this["MetaCopyright"]));
+            }
+            set {
+                this["MetaCopyright"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MetaLocation {
+            get {
+                return ((bool)(this["MetaLocation"]));
+            }
+            set {
+                this["MetaLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MetaCreationTime {
+            get {
+                return ((bool)(this["MetaCreationTime"]));
+            }
+            set {
+                this["MetaCreationTime"] = value;
+            }
+        }
     }
 }

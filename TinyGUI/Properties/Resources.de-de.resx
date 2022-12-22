@@ -59,4 +59,28 @@
     <data name="Redisant" xml:space="preserve">
         <value>https://www.redisant.com</value>
     </data>
+    <data name="PreserveMetadata" xml:space="preserve">
+        <value>Metadaten beibehalten:</value>
+    </data>
+    <data name="PreserveMetadataTip" xml:space="preserve">
+        <value>Sie können Metadaten angeben, die aus dem hochgeladenen Bild in die komprimierte Version kopiert werden. Unterstützt derzeit die Beibehaltung von Urheberrechtsinformationen, GPS-Standort und Erstellungsdatum. Das Beibehalten von Metadaten erhöht die Größe komprimierter Dateien, daher sollten Sie nur wichtige Metadaten aufbewahren.</value>
+    </data>
+    <data name="Copyright" xml:space="preserve">
+        <value>Urheberrechte ©</value>
+    </data>
+    <data name="CopyrightTip" xml:space="preserve">
+        <value>Alle Copyright-Informationen vorbehalten. Schließen Sie die EXIF-Copyright-Notation (JPEG), die XMP-Berechtigungsnotation (PNG) und die Photoshop-Copyright-Notation oder URL ein. Verwenden Sie bis zu 90 Byte plus die Länge der Copyright-Daten.</value>
+    </data>
+    <data name="Location" xml:space="preserve">
+        <value>Standort</value>
+    </data>
+    <data name="LocationTip" xml:space="preserve">
+        <value>Alle Erstellungsdaten oder -zeiten werden beibehalten. Dies ist der Moment, in dem ein Bild oder Foto erstmals erstellt wird. Enthält EXIF-Raw-Datetime-Stempel (JPEG) oder XMP-Erstellungszeit (PNG). Verwendet etwa 70 zusätzliche Bytes.</value>
+    </data>
+    <data name="CreationTime" xml:space="preserve">
+        <value>Erstellungsdatum</value>
+    </data>
+    <data name="CreationTimeTip" xml:space="preserve">
+        <value>Alle GPS-Standortinformationen, die beschreiben, wo das Bild oder Foto erstellt wurde, werden beibehalten. Enthält EXIF-GPS-Abmessungen und GPS-Genauigkeits-Tags (JPEG). Verwendet etwa 130 zusätzliche Bytes.</value>
+    </data>
 </root>

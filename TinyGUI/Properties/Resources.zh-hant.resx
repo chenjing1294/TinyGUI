@@ -32,4 +32,55 @@
     <data name="SupportMe" xml:space="preserve">
         <value>給個星星，支援一下</value>
     </data>
+    <data name="PreserveMetadata" xml:space="preserve">
+        <value>保留元數據：</value>
+    </data>
+    <data name="PreserveMetadataTip" xml:space="preserve">
+        <value>您可以指定從上傳圖片拷貝到壓縮版本的元數據。當前支持保留版權信息，GPS位置和創建日期。保留元數據會增加壓縮文件的大小，因此您應該只保留重要的元數據。</value>
+    </data>
+    <data name="Copyright" xml:space="preserve">
+        <value>版權信息</value>
+    </data>
+    <data name="Compression" xml:space="preserve">
+        <value>壓縮圖片</value>
+    </data>
+    <data name="CoverTip" xml:space="preserve">
+        <value>按比例縮小圖片，如有必要裁切圖片。結果具有準確的給定尺寸。圖片中哪個部分將被裁切是自動決定的。智能算法確定圖像中最重要的區域。</value>
+    </data>
+    <data name="FitTip" xml:space="preserve">
+        <value>按比例縮小圖片，使其適合（fit）給定的尺寸。你必須同時提供width和height。縮小後的圖像不會超過這些尺寸中的任何一個。</value>
+    </data>
+    <data name="Redisant" xml:space="preserve">
+        <value>http://www.redisant.cn</value>
+    </data>
+    <data name="ScaleTip" xml:space="preserve">
+        <value>按比例縮小圖片。您必須提供目標width或height，不能同時提供兩者。縮小後的圖片會有確定的寬度或者高度。</value>
+    </data>
+    <data name="SmartCut" xml:space="preserve">
+        <value>智能剪切</value>
+    </data>
+    <data name="ThumbTip" xml:space="preserve">
+        <value>檢測具有簡單背景的圖片。圖片會被縮小到您提供的width和height的大小。如果一個圖片被檢測到獨立物體，算法將在必要位置添加更多的背景，或者裁切掉不重要的部分。</value>
+    </data>
+    <data name="Upload" xml:space="preserve">
+        <value>直接上傳</value>
+    </data>
+    <data name="UploadTip" xml:space="preserve">
+        <value>您可以上傳任何JPEG或PNG圖片到Tinify API來進行壓縮。我們將自動檢測圖片類型並相應的使用TinyPNG或TinyJPG引擎進行優化。</value>
+    </data>
+    <data name="CopyrightTip" xml:space="preserve">
+        <value>保留所有版權信息。包括EXIF版權標記（JPEG），XMP權限標記（PNG）以及Photoshop版權標記或URL。使用最多90個字節，再加上版權數據的長度。</value>
+    </data>
+    <data name="Location" xml:space="preserve">
+        <value>位置信息</value>
+    </data>
+    <data name="LocationTip" xml:space="preserve">
+        <value>保留任何創建日期或時間。這是最初創建圖像或照片的時刻。包括EXIF原始日期時間標記（JPEG）或XMP創建時間（PNG）。使用大約70個額外字節。</value>
+    </data>
+    <data name="CreationTime" xml:space="preserve">
+        <value>創建日期</value>
+    </data>
+    <data name="CreationTimeTip" xml:space="preserve">
+        <value>保留任何GPS位置信息，該信息描述圖片或者照片創建的位置。包含EXIF GPS維度和GPS精度標籤（JPEG）。使用大約130個額外字節。</value>
+    </data>
 </root>
