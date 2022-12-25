@@ -8,7 +8,7 @@ namespace TinyGUI
 {
     public partial class App
     {
-        public static readonly string Version = "1.0.8.0";
+        public static readonly string Version = "1.0.9.0";
         private static readonly string[] AvailableLocales = {"zh", "zh-hant", "en", "de-de"};
 
         protected override void OnStartup(StartupEventArgs e)
