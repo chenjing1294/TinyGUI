@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:TinyGUI"
         xmlns:p="clr-namespace:TinyGUI.Properties"
         xmlns:converters="clr-namespace:TinyGUI.Converters"
+        Icon="../Images/panda.ico"
         FontSize="12"
         Title="TinyGUI"
         Width="390"
